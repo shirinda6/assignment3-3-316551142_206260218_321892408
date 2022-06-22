@@ -1,10 +1,32 @@
 <template>
   <div class="container">
     <h1 class="title">Search Page</h1>
-    <ejs-multiselect id='cuisinesselect' popupHeight="250px" :allowFiltering='allowFiltering' :filtering='filtering' :dataSource='cuisines' :fields='fields' placeholder="Select cuisines"></ejs-multiselect>  
-    <ejs-multiselect id='dietsselect' popupHeight="250px" :allowFiltering='allowFiltering' :filtering='filtering' :dataSource='diets' :fields='fields' placeholder="Select diets"></ejs-multiselect>  
-    <ejs-multiselect id='intolerancesselect' popupHeight="250px" :allowFiltering='allowFiltering' :filtering='filtering' :dataSource='intolerances' :fields='fields' placeholder="Select intolerances"></ejs-multiselect>  
-  </div>
+    <div>
+      <div>
+  <b-dropdown text="cuisines" variant="primary" class="m-2">
+    <b-dropdown-item disabled value="0">Select an Item</b-dropdown-item>
+    <b-dropdown-item v-for="cuisine in cuisines" 
+                    v-bind:key="cuisine"
+                    v-bind:value=cuisine
+                    @click="insertCuisines(cuisine)">{{cuisine}}</b-dropdown-item>
+  </b-dropdown><span>Selected: {{ filtercuisines }}</span>
+
+  <b-dropdown text="diets" variant="success" class="m-2">
+    <b-dropdown-item v-for="diet in diets" 
+                    v-bind:key="diet"
+                    v-bind:value=diet
+                    @click="insertDiets(diet)">{{diet}}</b-dropdown-item>
+  </b-dropdown><span>Selected: {{ filterdiets }}</span>
+
+  <b-dropdown text="intolerances" variant="outline-danger" class="m-2">
+    <b-dropdown-item v-for="intolerance in intolerances" 
+                    v-bind:key="intolerance"
+                    v-bind:value=intolerance
+                    @click="insertIntolerances(intolerance)">{{intolerance}}</b-dropdown-item>
+  </b-dropdown><span>Selected: {{ filterintolerances }}</span>
+</div>
+    </div>
+    </div>
 </template>
 
 <script>
@@ -16,41 +38,42 @@ import cuisines from "../assets/cuisines";
     name: "Search",
     data(){
       return{
-        // searchData : [
-        //     { Index: "s1", Country: "California" }, { Index: "s2", Country: "Florida" },
-        //     { Index: "s3", Country: "Alaska" }, { Index: "s4", Country: "Georgia" }
-        // ],
-        cuisines: [{ value: null, text: "", disabled: true }],
-        diets: [{ value: null, text: "", disabled: true }],
-        intolerances: [{ value: null, text: "", disabled: true }],
-        allowFiltering : true
+        cuisines: [],
+        diets: [],
+        intolerances: [],
+        allowFiltering : true,
+        filtercuisines:"",
+        filterdiets:"",
+        filterintolerances:""
         }
   },
-  
     mounted() {
     this.cuisines.push(...cuisines);
     this.diets.push(...diets);
     this.intolerances.push(...intolerances);
+  },
+  methods:{
+    insertCuisines(item){
+      if (!this.filtercuisines){
+        this.filtercuisines=item;
+      }
+      else this.filtercuisines+=","+item;
+    },
+    insertDiets(item){
+      if (!this.filterdiets){
+        this.filterdiets=item;
+      }
+      else this.filterdiets+=","+item;
+    },
+    insertIntolerances(item){
+      if (!this.filterintolerances){
+        this.filterintolerances=item;
+      }
+      else this.filterintolerances+=","+item;
+    }
   }
-  // methods: {
-  //       filtering: function(args) {
-  //          var searchData = [
-  //               { Index: "s1", Country: "California" }, { Index: "s2", Country: "Florida" },
-  //               { Index: "s3", Country: "Alaska" }, { Index: "s4", Country: "Georgia" }
-  //           ];
-  //          var query = new Query();
-  //           //frame the query based on search string with filter type.
-  //          query = (args.text != "") ? query.where("Country", "startswith", args.text, true) : query;
-  //           //pass the filter data source, filter query to updateData method.
-  //           args.updateData(searchData, query);
-  //       }
-  //   }
   }
   
 </script>
 <style>
-@import "../../node_modules/@syncfusion/ej2-base/styles/material.css";
-@import "../../node_modules/@syncfusion/ej2-inputs/styles/material.css";
-@import "../../node_modules/@syncfusion/ej2-vue-dropdowns/styles/material.css";
-@import "../../node_modules/@syncfusion/ej2-buttons/styles/material.css";
 </style>
