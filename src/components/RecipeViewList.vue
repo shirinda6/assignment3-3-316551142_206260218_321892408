@@ -37,7 +37,7 @@ export default {
     async updateRecipes() {
       try {
         const response = await this.axios.get(
-          this.$root.store.server_domain + "/users/userOn",
+           "http://127.0.0.1:3000/users/userOn",
         );
 
         // console.log(response);

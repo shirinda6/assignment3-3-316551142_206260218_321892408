@@ -25,16 +25,40 @@
         </b-form-invalid-feedback>
       </b-form-group>
 
+
+      <b-form-group
+        id="input-group-firstName"
+        label-cols-sm="3"
+        label="First name:"
+        label-for="firstName"
+      >
       <b-form-input
-          id="firstname"
-          v-model="$v.form.username.$model"
+          id="firstName"
+          v-model="$v.form.firstName.$model"
           type="text"
-          label="First name"
-          :state="validateState('firstname')"
+          :state="validateState('firstName')"
         ></b-form-input>
-        <b-form-invalid-feedback v-if="!$v.form.firstname.required">
+        <b-form-invalid-feedback>
           Firstname is required
         </b-form-invalid-feedback>
+        </b-form-group>
+
+        <b-form-group
+        id="input-group-lastName"
+        label-cols-sm="3"
+        label="Last name:"
+        label-for="lastName"
+      >
+      <b-form-input
+          id="lastName"
+          v-model="$v.form.lastName.$model"
+          type="text"
+          :state="validateState('lastName')"
+        ></b-form-input>
+        <b-form-invalid-feedback>
+          lastName is required
+        </b-form-invalid-feedback>
+        </b-form-group>
 
       <b-form-group
         id="input-group-country"
@@ -100,6 +124,23 @@
           The confirmed password is not equal to the original password
         </b-form-invalid-feedback>
       </b-form-group>
+
+      <b-form-group
+        id="input-group-email"
+        label-cols-sm="3"
+        label="Email:"
+        label-for="email"
+      >
+      <b-form-input
+          id="email"
+          v-model="$v.form.email.$model"
+          type="text"
+          :state="validateState('email')"
+        ></b-form-input>
+        <b-form-invalid-feedback>
+          email is required
+        </b-form-invalid-feedback>
+        </b-form-group>
 
       <b-button type="reset" variant="danger">Reset</b-button>
       <b-button
@@ -167,6 +208,12 @@ export default {
         length: (u) => minLength(3)(u) && maxLength(8)(u),
         alpha
       },
+      firstName:{
+        required
+      },
+      lastName:{
+        required
+      },
       country: {
         required
       },
@@ -177,7 +224,11 @@ export default {
       confirmedPassword: {
         required,
         sameAsPassword: sameAs("password")
-      }
+      },
+      email: {
+        required,
+        email
+      },
     }
   },
   mounted() {
@@ -199,8 +250,10 @@ export default {
           {
             userName: this.form.username,
             firstName: this.form.firstName,
+            lastName: this.form.lastName,
             country: this.form.country,
-            password: this.form.password
+            password: this.form.password,
+            email: this.form.email
           }
         );
         this.$router.push("/login");
