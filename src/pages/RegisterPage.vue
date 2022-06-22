@@ -25,6 +25,17 @@
         </b-form-invalid-feedback>
       </b-form-group>
 
+      <b-form-input
+          id="firstname"
+          v-model="$v.form.username.$model"
+          type="text"
+          label="First name"
+          :state="validateState('firstname')"
+        ></b-form-input>
+        <b-form-invalid-feedback v-if="!$v.form.firstname.required">
+          Firstname is required
+        </b-form-invalid-feedback>
+
       <b-form-group
         id="input-group-country"
         label-cols-sm="3"
@@ -183,10 +194,12 @@ export default {
       try {
         const response = await this.axios.post(
           // "https://test-for-3-2.herokuapp.com/user/Register",
-          this.$root.store.server_domain + "/Register",
+           "http://127.0.0.1:3000/Register",
 
           {
-            username: this.form.username,
+            userName: this.form.username,
+            firstName: this.form.firstName,
+            country: this.form.country,
             password: this.form.password
           }
         );
