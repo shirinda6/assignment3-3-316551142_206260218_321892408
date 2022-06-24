@@ -245,7 +245,7 @@ export default {
       try {
         const response = await this.axios.post(
           // "https://test-for-3-2.herokuapp.com/user/Register",
-           "http://127.0.0.1:3000/Register",
+           this.$root.store.serverDomain+"/Register",
 
           {
             userName: this.form.username,

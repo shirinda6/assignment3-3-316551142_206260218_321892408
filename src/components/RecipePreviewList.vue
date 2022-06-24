@@ -37,7 +37,7 @@ export default {
     async updateRecipes() {
       try {
         const response = await this.axios.get(
-          "http://127.0.0.1:3000/recipes/randomRecipes"
+          this.$root.store.serverDomain+"/recipes/randomRecipes"
           // "https://test-for-3-2.herokuapp.com/recipes/random"
         );
 

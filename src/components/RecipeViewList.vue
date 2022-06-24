@@ -36,12 +36,13 @@ export default {
   methods: {
     async updateRecipes() {
       try {
+        this.axios.defaults.withCredentials = true;
         const response = await this.axios.get(
-           "http://127.0.0.1:3000/users/userOn",
+           this.$root.store.serverDomain+"/users/userOn",{withCredentials: true}
         );
 
-        // console.log(response);
-        const recipes = response.data.recipes;
+        console.log(response);
+        const recipes = response.data.result;
         this.recipes = [];
         this.recipes.push(...recipes);
         // console.log(this.recipes);

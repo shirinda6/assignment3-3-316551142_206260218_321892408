@@ -64,6 +64,7 @@
 </template>
 
 <script>
+import { request } from "http";
 import { required } from "vuelidate/lib/validators";
 export default {
   name: "Login",
@@ -93,23 +94,24 @@ export default {
     },
     async Login() {
       try {
-        
+        this.axios.defaults.withCredentials = true;
         const response = await this.axios.post(
           // "https://test-for-3-2.herokuapp.com/user/Login",
-          "http://127.0.0.1:3000/Login",
+          this.$root.store.serverDomain+"/Login",
           // "http://132.72.65.211:80/Login",
           // "http://132.73.84.100:80/Login",
 
           {
             username: this.form.username,
             password: this.form.password
-          }
+          },{withCredentials: true}
         );
-        // console.log(response);
+        console.log(response);
         // this.$root.loggedIn = true;
         console.log(this.$root.store.login);
         this.$root.store.login(this.form.username);
         this.$router.push("/");
+
       } catch (err) {
         console.log(err.response);
         this.form.submitError = err.response.data.message;
