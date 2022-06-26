@@ -94,8 +94,7 @@ import cuisines from "../assets/cuisines";
         filterintolerances:"",
         selected: '5',
         recipes: [],
-        sorted:"",
-        lastSearch:{}
+        sorted:""
         }
   },
     mounted() {
@@ -104,6 +103,13 @@ import cuisines from "../assets/cuisines";
     this.intolerances.push(...intolerances);
     if(this.$root.store.username && this.$root.store.lastSearch){
       this.recipes=this.$root.store.lastSearch.resuilts;
+      let params=this.$root.store.lastSearch.paramsQuery;
+      this.selected=params.numberOfRecipe;
+      this.foodName=params.RecipeName;
+      this.filtercuisines=params.cuisine;
+      this.filterdiets=params.diet;
+      this.filterintolerances=params.intolerance;
+      console.log(this.recipes);
     }
   },
   methods:{
@@ -128,7 +134,7 @@ import cuisines from "../assets/cuisines";
     async SearchRecipe(){
       try {
         let params={
-          numberOfRecipe: this.selected,
+          numberOfRecipe:1, //this.selected,
           RecipeName:this.foodName,
           cuisine:this.filtercuisines,
           diet:this.filterdiets,
@@ -143,12 +149,22 @@ import cuisines from "../assets/cuisines";
         const recipes = response.data.search;
         this.recipes = [];
         this.recipes.push(...recipes);
-        // console.log(this.recipes);
+        
 
         if(this.$root.store.username){
-          this.lastSearch[paramsQuery]=params,
-          this.lastSearch[resuilts]=this.recipes
+          const views= response.data.view;
+          const favorites= response.data.favorite;
+          this.recipes.forEach((recipe)=>{
+            recipe.userView=views[recipe.id];
+            recipe.userFavorite=favorites[recipe.id];
+          });
+          let last={
+            paramsQuery:params,
+            resuilts:this.recipes
+          }
+          this.$root.store.Search(last);
         }
+        // console.log(this.recipes);
       } catch (error) {
         console.log(error);
       }

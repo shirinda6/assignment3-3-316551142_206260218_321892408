@@ -79,7 +79,10 @@ const shared_data = {
   logout() {
     console.log("logout");
     localStorage.removeItem("username");
+    localStorage.removeItem("searchQuery");
+    localStorage.removeItem("searchResuilts");
     this.username = undefined;
+    this.lastSearch = undefined;
   },
   Search(lastSearch){
     this.lastSearch=lastSearch;

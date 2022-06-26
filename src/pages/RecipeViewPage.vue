@@ -43,6 +43,7 @@
 
 <script>
 export default {
+  name: "recipe",
   data() {
     return {
       recipe: null
@@ -54,12 +55,13 @@ export default {
       // response = this.$route.params.response;
 
       try {
+        let params={
+          recipe_id:this.$route.params.recipeId
+        }
+        this.axios.defaults.withCredentials = true;
         response = await this.axios.get(
           // "https://test-for-3-2.herokuapp.com/recipes/info",
-          this.$root.store.server_domain + "/recipes/info",
-          {
-            params: { id: this.$route.params.recipeId }
-          }
+          this.$root.store.serverDomain + "/recipes/showRecipe", {params},{withCredentials: true}
         );
 
         // console.log("response.status", response.status);
@@ -69,7 +71,7 @@ export default {
         this.$router.replace("/NotFound");
         return;
       }
-
+      console.log("response",response);
       let {
         analyzedInstructions,
         instructions,
@@ -77,9 +79,12 @@ export default {
         aggregateLikes,
         readyInMinutes,
         image,
-        title
-      } = response.data.recipe;
-
+        title,
+        vegan,
+        vegetarian,
+        glutenFree
+      } = response.data;
+      console.log("analyzedInstructions",analyzedInstructions);
       let _instructions = analyzedInstructions
         .map((fstep) => {
           fstep.steps[0].step = fstep.name + fstep.steps[0].step;
@@ -95,7 +100,10 @@ export default {
         aggregateLikes,
         readyInMinutes,
         image,
-        title
+        title,
+        vegan,
+        vegetarian,
+        glutenFree
       };
 
       this.recipe = _recipe;
