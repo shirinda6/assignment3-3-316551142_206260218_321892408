@@ -54,14 +54,10 @@
 </div>
 <div>
   sort by:
-  <input type="radio" v-model="sorted" value="readyInMinutes" @click="sortby(readyInMinutes)">preparation time
-  <input type="radio" v-model="sorted" value="popularity" @click="sortby(popularity)">popularity
+  <input type="radio" v-model="sorted" value="readyInMinutes" @click="sortby('readyInMinutes')">preparation time
+  <input type="radio" v-model="sorted" value="popularity" @click="sortby('popularity')">popularity
 </div>
 <b-container>
-    <h3>
-      {{ title }}:
-      <slot></slot>
-    </h3>
     <!-- <b-row> -->
       <b-col v-for="r in recipes" :key="r.id">
         <RecipePreview class="recipePreview" :recipe="r" />
