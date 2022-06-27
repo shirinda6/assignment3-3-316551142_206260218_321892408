@@ -232,12 +232,13 @@ export default {
             required,
         },
         ingredients: {
+            ingredient: {
+            required
+        },
             amount: {
             required
         },
-            ingredient: {
-            required
-        }},
+        },
         clickable: {
             required
         },

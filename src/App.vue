@@ -110,23 +110,26 @@ export default {
         }
         // add ml grm to amount 
         let str = "";
-        console.log(typeof(this.$refs.createRecipe.form.ingredients),"arr")
+        let f=false;
         for (const [key, value] of Object.entries(this.$refs.createRecipe.form.ingredients)) {
-           console.log(`${key}: ${value}`);
+          if(key==0)
+            continue;
+          if(String(key)=="ingredient"){
+            if(f){
+              str+=","  }
+            f=true;
+            str+=`${value}:`
+          }
+          if(String(key)=="amount"){
+            str+=`${value}`
+          }
         }
-        // this.$refs.createRecipe.form.ingredients.values.forEach(element => {
-        //   str+=","+element.ingredient+":"+element.amount
-        //   console.log(element,"el")
-        //   console.log(element.amount,"am")
-
-        // });
         // call server - create recipe
         try {
         this.axios.defaults.withCredentials = true;  
         const response = await this.axios.post(
           // "https://test-for-3-2.herokuapp.com/user/Register",
            this.$root.store.serverDomain+"/recipes/createRecipe/",
-
           {
             recipeName: this.$refs.createRecipe.form.recipeName,
             image: this.$refs.createRecipe.form.image,
