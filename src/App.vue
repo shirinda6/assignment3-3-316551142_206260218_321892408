@@ -68,7 +68,7 @@
     
     
 <b-modal id="modal-1" ref="my-modal1" title="Create Recipe" @ok="create">
-    <CreateRecipe />
+    <CreateRecipe ref="createRecipe" />
   </b-modal>
 
 
@@ -101,9 +101,78 @@ export default {
     showModal() {
         this.$refs['my-modal1'].show()
       },
-      create(){
-        console.log("create");
+      async create(event){
+        event.preventDefault()
+        console.log(this.$refs.createRecipe.form,"form");
+        if(!(this.$refs.createRecipe.form.recipeName && this.$refs.createRecipe.form.ingredients && this.$refs.createRecipe.form.image && this.$refs.createRecipe.form.preparationTime && this.$refs.createRecipe.form.preparationInsructions)){
+          console.log("am");
+          return
+        }
+        // add ml grm to amount 
+        let str = "";
+        console.log(typeof(this.$refs.createRecipe.form.ingredients),"arr")
+        for (const [key, value] of Object.entries(this.$refs.createRecipe.form.ingredients)) {
+           console.log(`${key}: ${value}`);
+        }
+        // this.$refs.createRecipe.form.ingredients.values.forEach(element => {
+        //   str+=","+element.ingredient+":"+element.amount
+        //   console.log(element,"el")
+        //   console.log(element.amount,"am")
+
+        // });
+        // call server - create recipe
+        try {
+        this.axios.defaults.withCredentials = true;  
+        const response = await this.axios.post(
+          // "https://test-for-3-2.herokuapp.com/user/Register",
+           this.$root.store.serverDomain+"/recipes/createRecipe/",
+
+          {
+            recipeName: this.$refs.createRecipe.form.recipeName,
+            image: this.$refs.createRecipe.form.image,
+            preparationTime: this.$refs.createRecipe.form.preparationTime,
+            clickable:Object.values(this.$refs.createRecipe.form.checked).includes("c1"),
+            ingredients: str,
+            preparationInsructions:this.$refs.createRecipe.form.preparationInsructions,
+            numberOfDishes:this.$refs.createRecipe.form.numberOfDishes,
+            vegetarian:Object.values(this.$refs.createRecipe.form.checked).includes("c2"),
+            vegan: Object.values(this.$refs.createRecipe.form.checked).includes("c3"),
+            gluten: Object.values(this.$refs.createRecipe.form.checked).includes("c4"),
+            owner:this.$refs.createRecipe.form.owner,
+            customaryPrepare:this.$refs.createRecipe.form.customaryPrepare,
+          },{withCredentials: true}
+        );
+        console.log(response);
+        let ids= response.data.recipe_id;
+      } catch (err) {
+        console.log(err)
+        console.log(err.response);
+        this.form.submitError = err.response.data.message;
       }
+        // if selected my-family add to myFamily table
+        if((!(this.$refs.createRecipe.flag) &&this.$refs.createRecipe.form.owner &&this.$refs.createRecipe.form.customaryPrepare))
+           {
+             try {
+                this.axios.defaults.withCredentials = true;  
+                const response1 = await this.axios.post(
+                  // "https://test-for-3-2.herokuapp.com/user/Register",
+                this.$root.store.serverDomain+"/users/myFamily/",
+
+          {
+            reciepeId: ids,
+          },{withCredentials: true}
+        );
+        // console.log(response);
+      } catch (err) {
+        console.log(err.response1);
+        this.form.submitError = err.response.data.message;
+      }
+           }
+
+        this.$nextTick(() => {
+        this.$bvModal.hide('modal-1')
+        })    
+      },
   }
 };
 </script>
