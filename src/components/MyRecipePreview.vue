@@ -1,28 +1,20 @@
 <template>
-
-    <b-card no-body class="recipe-preview">
-      <router-link
-          :to="{ name: 'recipe', params: { recipeId: recipe.id,view:recipe.userView, favorite:recipe.userFavorite } }"      >
-         <img v-if="image_load" :src="recipe.image" class="recipe-image" />
-      </router-link>
-        <b-card-text>
-          <div class="recipe-footer">
-            <div :title="recipe.title" class="recipe-title">
-              {{ recipe.title }}
-            </div>
-            <ul class="recipe-overview" >
-              <li>{{ recipe.readyInMinutes }} minutes</li>
-              <li>{{ recipe.popularity }} &#128077; </li>
-              <li><b-button disabled style="background-color:white; border-color:white;"> <span v-if="recipe.userFavorite" style="color: #ff0000;">&#10084;</span>
-              <span v-else style="color: #808080;">&#10084;</span>
-              </b-button></li>
-              <li><b-button disabled style="background-color:white; border-color:white;"> <span v-if="recipe.userView" style="color: #ff0000">&#128065;</span>
-              <span v-else style="color: #808080;">&#128065;</span>
-              </b-button></li>
-            </ul>
-          </div>
-        </b-card-text>
-    </b-card>
+  <router-link
+    :to="{ name: 'RecipePage', params: { recipe: recipe } }"
+    class="recipe-preview"
+  >
+    <div class="recipe-body">
+      <img v-if="image_load" :src="recipe.image" class="recipe-image" />
+    </div>
+    <div class="recipe-footer">
+      <div :title="recipe.title" class="recipe-title">
+        {{ recipe.title }}
+      </div>
+      <ul class="recipe-overview">
+        <li>{{ recipe.preparationTime }} minutes</li>
+      </ul>
+    </div>
+  </router-link>
 </template>
 
 <script>
@@ -43,6 +35,29 @@ export default {
       required: true
     }
 
+    // id: {
+    //   type: Number,
+    //   required: true
+    // },
+    // title: {
+    //   type: String,
+    //   required: true
+    // },
+    // readyInMinutes: {
+    //   type: Number,
+    //   required: true
+    // },
+    // image: {
+    //   type: String,
+    //   required: true
+    // },
+    // aggregateLikes: {
+    //   type: Number,
+    //   required: false,
+    //   default() {
+    //     return undefined;
+    //   }
+    // }
   }
 };
 </script>
@@ -50,14 +65,14 @@ export default {
 <style scoped>
 .recipe-preview {
   display: inline-block;
-  width: 100%;
+  width: 90%;
   height: 100%;
   position: relative;
   margin: 10px 10px;
 }
 .recipe-preview > .recipe-body {
   width: 100%;
-  height: 150px;
+  height: 200px;
   position: relative;
 }
 
@@ -67,20 +82,16 @@ export default {
   margin-top: auto;
   margin-bottom: auto;
   display: block;
-  width: 100%;
-  /* height: auto; */
+  width: 48%;
+  height: auto;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
 }
 
-.recipe-image{
-  width:100%
-}
-
 .recipe-preview .recipe-footer {
   width: 100%;
-  height: 150px;
+  height: 50%;
   overflow: hidden;
 }
 
@@ -89,7 +100,7 @@ export default {
   width: 100%;
   font-size: 12pt;
   text-align: left;
-  /* white-space: nowrap; */
+  white-space: nowrap;
   overflow: hidden;
   -o-text-overflow: ellipsis;
   text-overflow: ellipsis;

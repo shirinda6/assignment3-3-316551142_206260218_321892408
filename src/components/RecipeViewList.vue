@@ -45,6 +45,18 @@ export default {
         const recipes = response.data.result;
         this.recipes = [];
         this.recipes.push(...recipes);
+        if(this.$root.store.username){
+          const favorites= response.data.favorite;
+          this.recipes.forEach((recipe)=>{
+            recipe.userView=true;
+            recipe.userFavorite=favorites[recipe.id];
+          });
+          let last={
+            paramsQuery:params,
+            resuilts:this.recipes
+          }
+          this.$root.store.Search(last);
+        }
         // console.log(this.recipes);
       } catch (error) {
         console.log(error);

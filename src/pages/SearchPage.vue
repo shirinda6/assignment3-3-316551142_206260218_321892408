@@ -58,11 +58,11 @@
   <input type="radio" v-model="sorted" value="popularity" @click="sortby('popularity')">popularity
 </div>
 <b-container>
-    <!-- <b-row> -->
-      <b-col v-for="r in recipes" :key="r.id">
+    <b-row>
+      <b-card-group class="col-md-4" v-for="r in recipes" :key="r.id">
         <RecipePreview class="recipePreview" :recipe="r" />
-      </b-col>
-    <!-- </b-row> -->
+      </b-card-group>
+    </b-row>
   </b-container>
     </div>
 </template>
@@ -130,7 +130,7 @@ import cuisines from "../assets/cuisines";
     async SearchRecipe(){
       try {
         let params={
-          numberOfRecipe:1, //this.selected,
+          numberOfRecipe:this.selected,
           RecipeName:this.foodName,
           cuisine:this.filtercuisines,
           diet:this.filterdiets,

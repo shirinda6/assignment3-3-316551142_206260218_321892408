@@ -130,10 +130,10 @@
         </b-form-group>        
         <!-- add require and validation -->
        <b-form-textarea
-        id="preparationInsructions"
+        id="preparationInstructions"
         placeholder="Enter preparation insructions"
         rows="4"
-        v-model="$v.form.preparationInsructions.$model"
+        v-model="$v.form.preparationInstructions.$model"
        ></b-form-textarea>
 
         
@@ -195,7 +195,7 @@ export default {
         customaryPrepare: "",
         owner: "",
         checked: [],
-        preparationInsructions:"",
+        preparationInstructions:"",
         ingredients:[
         {
         ingredient: "",
@@ -228,7 +228,7 @@ export default {
         numberOfDishes: {
             required,
         },
-        preparationInsructions:{
+        preparationInstructions:{
             required,
         },
         ingredients: {

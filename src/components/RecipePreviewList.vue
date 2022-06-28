@@ -45,6 +45,14 @@ export default {
         const recipes = response.data.random;
         this.recipes = [];
         this.recipes.push(...recipes);
+        if(this.$root.store.username){
+          const views= response.data.view;
+          const favorites= response.data.favorite;
+          this.recipes.forEach((recipe)=>{
+            recipe.userView=views[recipe.id];
+            recipe.userFavorite=favorites[recipe.id];
+          });
+        }
         // console.log(this.recipes);
       } catch (error) {
         console.log(error);

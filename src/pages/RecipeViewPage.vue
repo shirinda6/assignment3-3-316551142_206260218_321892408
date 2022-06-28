@@ -9,8 +9,24 @@
         <div class="wrapper">
           <div class="wrapped">
             <div class="mb-3">
+              <b-button style="background-color:white; border-color:white;" id="fav" :disabled="!this.$root.store.username"  v-bind:style="{color: activeColor}"  v-on:click="MarkFavorite"> 
+              &#10084;
+          </b-button>
               <div>Ready in {{ recipe.readyInMinutes }} minutes</div>
-              <div>Likes: {{ recipe.aggregateLikes }} likes</div>
+              <div>Number of dishes: {{ recipe.servings }}</div>
+              <div>{{ recipe.aggregateLikes }} &#128077; </div>
+              <div>Vegetarian
+                <span v-if="recipe.vegetarian">&#10004;</span>
+                 <span v-else>&#10005;</span>
+                 </div>
+                 <div>Vegan
+                <span v-if="recipe.vegan">&#10004;</span>
+                 <span v-else>&#10005;</span>
+                 </div>
+                 <div>Free gluten
+                <span v-if="recipe.glutenFree">&#10004;</span>
+                 <span v-else>&#10005;</span>
+                 </div>
             </div>
             Ingredients:
             <ul>
@@ -46,14 +62,18 @@ export default {
   name: "recipe",
   data() {
     return {
-      recipe: null
+      recipe: null,
+      favorite: false,
+      activeColor:"grey"
     };
   },
   async created() {
     try {
       let response;
       // response = this.$route.params.response;
-
+      this.favorite=this.$route.params.favorite;
+      if(this.favorite)
+        this.activeColor="red";
       try {
         let params={
           recipe_id:this.$route.params.recipeId
@@ -73,6 +93,7 @@ export default {
       }
       console.log("response",response);
       let {
+        id,
         analyzedInstructions,
         instructions,
         extendedIngredients,
@@ -82,7 +103,7 @@ export default {
         title,
         vegan,
         vegetarian,
-        glutenFree
+        glutenFree,servings
       } = response.data;
       console.log("analyzedInstructions",analyzedInstructions);
       let _instructions = analyzedInstructions
@@ -93,6 +114,7 @@ export default {
         .reduce((a, b) => [...a, ...b], []);
 
       let _recipe = {
+        id,
         instructions,
         _instructions,
         analyzedInstructions,
@@ -103,14 +125,49 @@ export default {
         title,
         vegan,
         vegetarian,
-        glutenFree
+        glutenFree,servings
       };
 
       this.recipe = _recipe;
+      
     } catch (error) {
       console.log(error);
     }
+  },
+   methods:{
+  async MarkFavorite(){
+    if (!this.favorite){
+    try {
+          this.axios.defaults.withCredentials = true;  
+          const response1 = await this.axios.post(
+          this.$root.store.serverDomain+"/users/favorites",
+
+          {reciepeId: this.recipe.id,},{withCredentials: true}
+        );
+        this.activeColor="red";
+        // console.log(response);
+      } catch (err) {
+        console.log(err.response1);
+        this.form.submitError = err.response1.data.message;
+      }
   }
+  else{
+    try {
+          this.axios.defaults.withCredentials = true;  
+          const response = await this.axios.post(
+          this.$root.store.serverDomain+"/users/removeFavorite",
+
+          {reciepeId: this.recipe.id,},{withCredentials: true}
+        );
+        this.activeColor="grey";
+        // console.log(response);
+      } catch (err) {
+        console.log(err.response);
+        this.form.submitError = err.response.data.message;
+      }
+  }
+  }
+   }
 };
 </script>
 
