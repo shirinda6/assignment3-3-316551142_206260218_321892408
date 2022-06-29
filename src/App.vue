@@ -1,77 +1,43 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link :to="{ name: 'main' }">Vue Recipes</router-link>|
-      <router-link :to="{ name: 'search' }">Search</router-link>|
-      {{ !$root.store.username }}
-      <span v-if="!$root.store.username">
-        Guest:
-        <router-link :to="{ name: 'register' }">Register</router-link>|
-        <router-link :to="{ name: 'login' }">Login</router-link>|
-      </span>
-      <span v-else>
-        <b-dropdown text="Personal" variant="outline-danger" class="m-2">
-          <b-dropdown-item :to="{ name: 'MyFavorites' }">Favorites</b-dropdown-item>
-          <b-dropdown-item :to="{ name: 'MyPrivate' }">Private</b-dropdown-item>
-          <b-dropdown-item :to="{ name: 'MyFamily' }">La Familia</b-dropdown-item>
-        </b-dropdown>
-        <!-- <b-button @click="modalShow = !modalShow">Create recipe</b-button> -->
-        {{ $root.store.username }}: <button @click="Logout">Logout</button>|
-      </span>
-    </div>
-    
-
-
-
-    
-     <div>
-  <b-navbar toggleable="lg" type="dark" variant="info">
-    <b-navbar-brand href="#">NavBar</b-navbar-brand>
-
-    <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-
-    <b-collapse id="nav-collapse" is-nav>
-      <b-navbar-nav>
-        <b-nav-item :to="{ name: 'main' }">Vue Recipes</b-nav-item>
-        <b-nav-item href="#" disabled>Disabled</b-nav-item>
-      <!-- </b-navbar-nav> -->
-
-      <!-- Right aligned nav items -->
-      <!-- <b-navbar-nav class="ml-auto"> -->
-          <b-nav-item size="sm" class="my-2 my-sm-0" :to="{ name: 'search' }">Search</b-nav-item>
-<span v-if="!$root.store.username">
-        Guest:
-        <b-nav-item :to="{ name: 'register' }">Register</b-nav-item>
-        <b-nav-item :to="{ name: 'login' }">Login</b-nav-item>
-      </span>
-      <span v-else>
-        <b-nav-item-dropdown text="Personal" right>
-          <b-dropdown-item :to="{ name: 'MyFavorites' }">Favorites</b-dropdown-item>
-          <b-dropdown-item :to="{ name: 'MyPrivate' }">Private</b-dropdown-item>
-          <b-dropdown-item :to="{ name: 'MyFamily' }">La Familia</b-dropdown-item>
-        </b-nav-item-dropdown>
-
-<b-button size="sm" class="my-2 my-sm-0" @click="showModal">create Recipe</b-button>
-{{ $root.store.username }}: <button @click="Logout">Logout</button>
-</span>
-        <!-- <b-nav-item-dropdown right>
-          <template #button-content>
-            <em>User</em>
-          </template>
-          <b-dropdown-item href="#">Profile</b-dropdown-item>
-          <b-dropdown-item href="#">Sign Out</b-dropdown-item>
-        </b-nav-item-dropdown> -->
-      </b-navbar-nav>
-    </b-collapse>
-  </b-navbar>
-</div>
-    
-    
-<b-modal id="modal-1" ref="my-modal1" title="Create Recipe" @ok="create">
-    <CreateRecipe ref="createRecipe" />
-  </b-modal>
-
-
+  <div id="app"> 
+    <div>
+      <b-navbar toggleable="lg" type="dark" variant="info">
+        <b-navbar-brand href="#">sal-recipes</b-navbar-brand>
+        <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+        <b-collapse id="nav-collapse" is-nav>
+          <b-navbar-nav style="padding-left: 5%">
+            <b-nav-item :to="{ name: 'main' }">Main</b-nav-item>
+            <b-nav-item href="#" disabled>Disabled</b-nav-item>
+            <b-nav-item size="sm" class="my-2 my-sm-0" :to="{ name: 'search' }">Search</b-nav-item>
+            <span v-if="!$root.store.username" class="userConnect">
+              Guest:
+              <b-nav-item :to="{ name: 'register' }">Register</b-nav-item>
+              <b-nav-item :to="{ name: 'login' }">Login</b-nav-item>
+            </span>
+            <span v-else class="userConnect">
+              <b-nav-item-dropdown text="Personal" right>
+                <b-dropdown-item :to="{ name: 'MyFavorites' }">Favorites</b-dropdown-item>
+                <b-dropdown-item :to="{ name: 'MyPrivate' }">Private</b-dropdown-item>
+                <b-dropdown-item :to="{ name: 'MyFamily' }">La Familia</b-dropdown-item>
+              </b-nav-item-dropdown>
+              <!-- <b-button size="sm" class="my-2 my-sm-0" @click="showModal">create Recipe</b-button>
+              {{ $root.store.username }}: <button @click="Logout">Logout</button> -->
+            <!-- </span> -->
+            <b-button style="background-color:#D3D3D3;" size="sm" class="my-2 my-sm-0" @click="showModal">create Recipe</b-button>          
+            </span>
+            <span  v-if="$root.store.username" style="margin-left:550px;">
+                <button variant="outline-info" style="background-color:	#D3D3D3;border:3px solid #00FFFF;border-radius: 25px; width: 170%;height: 100%;" class="mb-2" @click="Logout">
+                  <b-icon icon="power" aria-hidden="true">
+                </b-icon> {{ $root.store.username }}</button>
+              <!-- {{ $root.store.username }}: <button @click="Logout">Logout</button> -->
+            </span>
+          </b-navbar-nav>
+        </b-collapse>
+      </b-navbar>
+    </div>      
+    <b-modal id="modal-1" ref="my-modal1" title="Create Recipe" @ok="create">
+      <CreateRecipe ref="createRecipe" />
+    </b-modal>
     <router-view />
   </div>
 </template>
@@ -202,6 +168,10 @@ export default {
 
 #nav a.router-link-exact-active {
   color: #42b983;
+}
+
+.userConnect{
+  display: flex;
 }
 
 </style>
