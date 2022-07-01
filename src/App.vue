@@ -78,18 +78,22 @@ export default {
         let str = "";
         let f=false;
         for (const [key, value] of Object.entries(this.$refs.createRecipe.form.ingredients)) {
-          if(key==0)
-            continue;
-          if(String(key)=="ingredient"){
-            if(f){
-              str+=","  }
-            f=true;
-            str+=`${value}:`
-          }
-          if(String(key)=="amount"){
-            str+=`${value}`
-          }
+          console.log("value",value)
+          if(str!=="") {str+=",";}
+          str+=`${value.ingredient}:${value.amount}`;
+          // if(key==0)
+          //   continue;
+          // if(String(key)=="ingredient"){
+          //   if(f){
+          //     str+=","  }
+          //   f=true;
+          //   str+=`${value}:`
+          // }
+          // if(String(key)=="amount"){
+          //   str+=`${value}`
+          // }
         }
+        console.log("str",str)
         // call server - create recipe
         let ids="";
         try {
