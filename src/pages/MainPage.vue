@@ -1,18 +1,32 @@
 <template>
   <div class="container">
     <h1 class="title">Main Page</h1>
-    <RecipePreviewList title="Randome Recipes" class="RandomRecipes center" />
-    <router-link v-if="!$root.store.username" to="/login" tag="button">You need to Login to vue this</router-link>
-    {{ !$root.store.username }}
+    <div style="display: flex;">
+    <div style="width: 50%; float: left;">
+    <RecipePreviewList title="Randome Recipes" class="RandomRecipes center" :key="componentKey" />
+    <b-button @click="reload">random</b-button>
+</div>
+<div style="width: 50%; float: right;">
+    <!-- <router-link v-if="!$root.store.username" to="/login" tag="button">You need to Login to vue this</router-link> -->
     <RecipeViewList
       title="Last Viewed Recipes"
       :class="{
         RandomRecipes: true,
-        blur: !$root.store.username,
+        // blur: !$root.store.username,
         center: true
       }"
-      disabled
+      v-if="$root.store.username"
     ></RecipeViewList>
+    <LoginPage 
+    v-if="!$root.store.username"
+    :class="{
+        RandomRecipes: true,
+        // blur: !$root.store.username,
+        center: true
+      }"
+      ></LoginPage>
+    </div>
+    </div>
     <!-- <div
       style="position: absolute;top: 70%;left: 50%;transform: translate(-50%, -50%);"
     >
@@ -24,10 +38,22 @@
 <script>
 import RecipePreviewList from "../components/RecipePreviewList";
 import RecipeViewList from "../components/RecipeViewList";
+import LoginPage from "../pages/LoginPage";
 export default {
+  data(){
+    return{
+      componentKey: 0,
+    }
+  },
   components: {
     RecipePreviewList,
-    RecipeViewList
+    RecipeViewList,
+    LoginPage
+  },
+  methods:{
+    reload(){
+      this.componentKey+=1;
+    }
   }
 };
 </script>
