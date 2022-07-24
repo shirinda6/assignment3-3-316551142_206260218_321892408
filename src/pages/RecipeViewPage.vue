@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container" style="max-width: 1980px; width: 100%">
     <div v-if="recipe">
       <div class="recipe-header mt-3 mb-4">
         <h1>{{ recipe.title }}</h1>

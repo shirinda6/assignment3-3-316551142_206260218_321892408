@@ -138,7 +138,7 @@
         rows="4"
         v-model="$v.form.preparationInstructions.$model"
       ></b-form-textarea>
-
+      <div v-if="!flag">
       <b-form-group
         id="input-group-customaryPrepare"
         label-cols-sm="3"
@@ -149,7 +149,6 @@
           id="customaryPrepare"
           v-model="$v.form.customaryPrepare.$model"
           type="text"
-          :disabled="flag"
         ></b-form-input>
       </b-form-group>
 
@@ -163,9 +162,9 @@
           id="owner"
           v-model="$v.form.owner.$model"
           type="text"
-          :disabled="flag"
         ></b-form-input>
       </b-form-group>
+      </div>
     </b-form>
   </div>
 </template>

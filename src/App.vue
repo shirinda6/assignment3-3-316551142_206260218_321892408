@@ -1,13 +1,13 @@
 <template>
   <div id="app"> 
     <div>
-      <b-navbar toggleable="lg" type="dark" variant="info">
+      <b-navbar toggleable="lg" type="dark" variant="dark">
         <b-navbar-brand href="#">sal-recipes</b-navbar-brand>
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
         <b-collapse id="nav-collapse" is-nav>
           <b-navbar-nav style="padding-left: 5%">
             <b-nav-item :to="{ name: 'main' }">Main</b-nav-item>
-            <b-nav-item href="#" disabled>Disabled</b-nav-item>
+            <b-nav-item href="#">About</b-nav-item>
             <b-nav-item size="sm" class="my-2 my-sm-0" :to="{ name: 'search' }">Search</b-nav-item>
             <span v-if="!$root.store.username" class="userConnect">
               Guest:

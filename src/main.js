@@ -31,6 +31,7 @@ import {
   IconsPlugin,
   BootstrapVueIcons,
   BootstrapVue,
+  CollapsePlugin,
 } from "bootstrap-vue";
 [
   FormGroupPlugin,
@@ -49,7 +50,7 @@ import {
   IconsPlugin,
   BootstrapVue,
   BootstrapVueIcons,
-
+  CollapsePlugin,
 ].forEach((x) => Vue.use(x));
 Vue.use(Vuelidate);
 

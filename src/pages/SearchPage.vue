@@ -1,58 +1,81 @@
 <template>
-  <div class="container">
+  <div class="container" style="max-width: 1980px; width: 100%">
     <h1 class="title">Search Page</h1>
+    <div style="width: 30%; float: left; margin-top: 3%;">
+    <div class="row row-col-2" style="margin-left: 1%;">
     <div>
-    <b-form-input 
+    <b-form-input class="col-16"
     id="foodName"
     placeholder="Enter food name"
     v-model="foodName"></b-form-input>
     </div>
-<div>
-  <input type="radio" v-model="selected" value="5" checked>5
-  <input type="radio" v-model="selected" value="10">10
-  <input type="radio" v-model="selected" value="15">15
-    <!-- <b-radio
-      v-model="selected"
-      :options="options"
-      class="mb-3"
-      value-field="item"
-      text-field="name"
-      disabled-field="notEnabled"
-    ></b-radio> -->
-    <div class="mt-3">Selected: <strong>{{ selected }}</strong></div>
-  </div>
-    <div>
-  <b-dropdown text="cuisines" variant="primary" class="m-2">
-    <b-dropdown-item disabled value="0">Select an Item</b-dropdown-item>
-    <b-dropdown-item v-for="cuisine in cuisines" 
-                    v-bind:key="cuisine"
-                    v-bind:value=cuisine
-                    @click="insertCuisines(cuisine)">{{cuisine}}</b-dropdown-item>
-  </b-dropdown><span>Selected: {{ filtercuisines }}</span>
-
-  <b-dropdown text="diets" variant="success" class="m-2">
-    <b-dropdown-item v-for="diet in diets" 
-                    v-bind:key="diet"
-                    v-bind:value=diet
-                    @click="insertDiets(diet)">{{diet}}</b-dropdown-item>
-  </b-dropdown><span>Selected: {{ filterdiets }}</span>
-
-  <b-dropdown text="intolerances" variant="outline-danger" class="m-2">
-    <b-dropdown-item v-for="intolerance in intolerances" 
-                    v-bind:key="intolerance"
-                    v-bind:value=intolerance
-                    @click="insertIntolerances(intolerance)">{{intolerance}}</b-dropdown-item>
-  </b-dropdown><span>Selected: {{ filterintolerances }}</span>
-</div>
-<div>
+    <div class="col">
   <b-button
         type="submit"
         variant="primary"
-        class="ml-5 w-75" @click="SearchRecipe"
-        >Search</b-button
+        class=" w-15" @click="SearchRecipe"
+        ><b-icon icon="search" aria-hidden="true"></b-icon></b-button
       >
 </div>
-<div>
+</div>
+<div style="margin: 2%; padding: 1%;">
+  <input type="radio" v-model="selected" value="5" checked> 5
+  <input type="radio" v-model="selected" value="10"> 10
+  <input type="radio" v-model="selected" value="15"> 15
+  </div>
+    <div>
+  <b-dropdown id="filter" text="Filter" variant="primary" class="m-2" style="width: 200px !important; ">
+  <div role="tablist" class="accordion" style="min-height: 0 !important; overflow-y:auto;" >
+    <b-card no-body class="mb-1" style=" width: 300px !important;">
+      <b-card-header role="tab" class="p-1" header-tag="header">
+        <b-button block v-b-toggle.cuisines><b-icon icon="chevron-down" aria-hidden="true"></b-icon>  cuisines</b-button>
+      </b-card-header>
+      <b-collapse id="cuisines" visible accordion="my-accordion" role="tabpanel">
+        <b-card-body>
+          <b-form-checkbox v-for="cuisine in cuisines" 
+                v-bind:key="cuisine"
+                v-bind:value=cuisine
+                @input="insertCuisines(cuisine)">{{cuisine}}</b-form-checkbox>
+        </b-card-body>
+      </b-collapse>
+     </b-card>
+
+    <b-card no-body class="mb-1">
+      <b-card-header role="tab" class="p-1">
+        <b-button block v-b-toggle.diets><b-icon icon="chevron-down" aria-hidden="true"></b-icon>  diets</b-button>
+      </b-card-header>
+      <b-collapse id="diets"  visible role="tabpanel">
+        <b-card-body>
+          <b-form-checkbox v-for="diet in diets" 
+                            v-bind:key="diet"
+                            v-bind:value=diet
+                            @input="insertDiets(diet)">{{diet}}
+            </b-form-checkbox>
+        </b-card-body>
+      </b-collapse> 
+    </b-card>
+
+    <b-card no-body class="mb-1">
+      <b-card-header role="tab" class="p-1">
+        <b-button block v-b-toggle.intolerances><b-icon icon="chevron-down" aria-hidden="true"></b-icon>  intolerances</b-button>
+      </b-card-header>
+      <b-collapse id="intolerances" visible role="tabpanel">
+        <b-card-body>
+          <b-form-checkbox v-for="intolerance in intolerances" 
+                    v-bind:key="intolerance"
+                    v-bind:value=intolerance
+                    @input="insertIntolerances(intolerance)">{{intolerance}}</b-form-checkbox>
+        </b-card-body>
+      </b-collapse>
+   </b-card>
+   </div>
+  </b-dropdown>
+
+</div>
+</div>
+
+<div style="width: 70%; float: right;">
+<div style="margin-left: 65%; margin-bottom: 2%;">
   sort by:
   <input type="radio" v-model="sorted" value="readyInMinutes" @click="sortby('readyInMinutes')">preparation time
   <input type="radio" v-model="sorted" value="popularity" @click="sortby('popularity')">popularity
@@ -64,6 +87,7 @@
       </b-card-group>
     </b-row>
   </b-container>
+  </div>
     </div>
 </template>
 
@@ -85,7 +109,7 @@ import cuisines from "../assets/cuisines";
         diets: [],
         intolerances: [],
         allowFiltering : true,
-        filtercuisines:"",
+        filtercuisines:[],
         filterdiets:"",
         filterintolerances:"",
         selected: '5',
@@ -102,7 +126,7 @@ import cuisines from "../assets/cuisines";
       let params=this.$root.store.lastSearch.paramsQuery;
       this.selected=params.numberOfRecipe;
       this.foodName=params.RecipeName;
-      this.filtercuisines=params.cuisine;
+      this.filtercuisines=params.cuisine.split(",");
       this.filterdiets=params.diet;
       this.filterintolerances=params.intolerance;
       console.log(this.recipes);
@@ -110,10 +134,16 @@ import cuisines from "../assets/cuisines";
   },
   methods:{
     insertCuisines(item){
-      if (!this.filtercuisines){
-        this.filtercuisines=item;
+      if (this.filtercuisines.includes(item)){
+        let index=this.filtercuisines.indexOf(item);
+        this.filtercuisines.splice(index,1);
       }
-      else this.filtercuisines+=","+item;
+      else this.filtercuisines.push(item);
+      // if (!this.filtercuisines){
+      //   this.filtercuisines=item;
+      // }
+      // else this.filtercuisines+=","+item;
+      console.log(this.filtercuisines);
     },
     insertDiets(item){
       if (!this.filterdiets){
@@ -132,7 +162,7 @@ import cuisines from "../assets/cuisines";
         let params={
           numberOfRecipe:this.selected,
           RecipeName:this.foodName,
-          cuisine:this.filtercuisines,
+          cuisine:this.filtercuisines.join(","),
           diet:this.filterdiets,
           intolerance:this.filterintolerances
         }
@@ -177,7 +207,7 @@ import cuisines from "../assets/cuisines";
 </script>
 <style>
   .m-2 .dropdown-menu {
-    max-height: 200px;
+    max-height: 300px;
     overflow-y: auto;
   }
 </style>

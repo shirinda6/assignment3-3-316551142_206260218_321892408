@@ -1,11 +1,13 @@
 <template>
-  <div class="container">
-    <h1 class="title">Main Page</h1>
+  <div class="container" style="max-width: 1980px; width: 100%">
+    <h1 class="title">Main Page</h1>  
     <div style="display: flex;">
     <div style="width: 50%; float: left;">
     <RecipePreviewList title="Randome Recipes" class="RandomRecipes center" :key="componentKey" />
-    <b-button @click="reload">random</b-button>
-</div>
+    <b-button @click="reload">
+      <b-icon icon="shuffle" aria-hidden="true"></b-icon>
+    </b-button>
+  </div>
 <div style="width: 50%; float: right;">
     <!-- <router-link v-if="!$root.store.username" to="/login" tag="button">You need to Login to vue this</router-link> -->
     <RecipeViewList

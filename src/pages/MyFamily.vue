@@ -1,5 +1,5 @@
 <template>
-  <b-container>
+  <b-container style="max-width: 1980px; width: 100%">
     <b-row>
       <b-col v-for="r in recipes" :key="r.id">
         <MyRecipePreview class="recipePreview" :recipe="r" />

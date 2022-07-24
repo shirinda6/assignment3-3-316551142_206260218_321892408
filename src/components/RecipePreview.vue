@@ -6,19 +6,19 @@
          <img v-if="image_load" :src="recipe.image" class="recipe-image" />
       </router-link>
         <b-card-text>
+          <b-button disabled id="btnLike" > <span v-if="recipe.userFavorite" style="color: red;">&#10084;</span>
+              <span v-else style="color: #808080;">&#10084;</span>
+              </b-button>
           <div class="recipe-footer">
-            <div :title="recipe.title" class="recipe-title">
+            <div :title="recipe.title" class="recipe-title" v-bind:style="{color: activeColor}">
               {{ recipe.title }}
             </div>
             <ul class="recipe-overview" >
-              <li>{{ recipe.readyInMinutes }} minutes</li>
-              <li>{{ recipe.popularity }} &#128077; </li>
-              <li><b-button disabled style="background-color:white; border-color:white;"> <span v-if="recipe.userFavorite" style="color: #ff0000;">&#10084;</span>
-              <span v-else style="color: #808080;">&#10084;</span>
-              </b-button></li>
-              <li><b-button disabled style="background-color:white; border-color:white;"> <span v-if="recipe.userView" style="color: #ff0000">&#128065;</span>
+              <li><b-icon icon="clock" aria-hidden="true"></b-icon> <span id="minutes">{{ recipe.readyInMinutes }}</span> min</li>
+              <li><b-icon icon="hand-thumbs-up" aria-hidden="true"></b-icon> {{ recipe.popularity }}</li>
+              <!-- <li><b-button disabled style="background-color:white; border-color:white;"> <span v-if="recipe.userView" style="color: red">&#128065;</span>
               <span v-else style="color: #808080;">&#128065;</span>
-              </b-button></li>
+              </b-button></li> -->
             </ul>
           </div>
         </b-card-text>
@@ -27,14 +27,19 @@
 
 <script>
 export default {
-  mounted() {
+  created(){
+    this.activeColor="blue";
     this.axios.get(this.recipe.image).then((i) => {
       this.image_load = true;
     });
+    if (this.recipe.userView) {
+        this.activeColor="grey";
+      }
   },
   data() {
     return {
-      image_load: true
+      image_load: true,
+      activeColor:"blue"
     };
   },
   props: {
@@ -53,7 +58,7 @@ export default {
   width: 100%;
   height: 100%;
   position: relative;
-  margin: 10px 10px;
+  /* margin: 5px 5px; */
 }
 .recipe-preview > .recipe-body {
   width: 100%;
@@ -84,6 +89,7 @@ export default {
   overflow: hidden;
 }
 
+
 .recipe-preview .recipe-footer .recipe-title {
   padding: 10px 10px;
   width: 100%;
@@ -94,6 +100,7 @@ export default {
   -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
 }
+
 
 .recipe-preview .recipe-footer ul.recipe-overview {
   padding: 5px 10px;
@@ -125,5 +132,19 @@ export default {
   width: 90px;
   display: table-cell;
   text-align: center;
+}
+
+#minutes{
+  color: #ff3333;
+  font-family: monospace;
+}
+
+#btnLike{
+  border: 2px solid rgb(2, 150, 194);
+  background-color: #01838f;
+  box-shadow: 0 1px 5px 5px #6ceeff, 0 0 5px 5px white ;
+  margin: -15% 0 0 70%;
+  border-radius: 50%;
+  font-size: larger;
 }
 </style>

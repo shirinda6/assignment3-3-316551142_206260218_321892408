@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container" style="max-width: 1980px; width: 100%">
     <div v-if="recipe">
       <div class="recipe-header mt-3 mb-4">
         <h1>{{ recipe.title }}</h1>
@@ -29,14 +29,14 @@
                  </div>
             </div>
             Ingredients:
-            <ul>
+            <ol>
               <li
                 v-for="(r, index) in ingredients"
                 :key="index"
               >
                 {{ r }}
               </li>
-            </ul>
+            </ol>
           </div>
           <div class="wrapped">
             Instructions:
@@ -66,9 +66,11 @@ export default {
   },
   async created() {
     this.recipe=this.$route.params.recipe;
+    console.log(this.recipe.ingredients)
     if (this.recipe.ingredients.includes(","))
         this.ingredients= this.recipe.ingredients.split(",");
     else  this.ingredients.push(this.recipe.ingredients);
+    console.log(this.ingredients);
   }
 };
 </script>
