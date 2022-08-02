@@ -1,8 +1,8 @@
 <template>
   <div class="container" style="max-width: 1980px; width: 100%">
     <div v-if="recipe">
-      <div class="recipe-header mt-3 mb-4">
-        <h1>{{ recipe.title }}</h1>
+      <div id="title" class="recipe-header mt-3 mb-4">
+        <h1 >{{ recipe.title }}</h1>
         <img :src="recipe.image" class="center" />
       </div>
       <div class="recipe-body">
@@ -10,7 +10,7 @@
           <div class="wrapped">
             <div class="mb-3">
               <div>Ready in {{ recipe.preparationTime }} minutes</div>
-              <div>Number of dishes: {{ recipe.numberOfDishes }}</div>
+              <div>Number of dishes {{ recipe.numberOfDishes }}</div>
               <div>Vegetarian
                 <span v-if="recipe.vegetarian">&#10004;</span>
                  <span v-else>&#10005;</span>
@@ -76,18 +76,21 @@ export default {
 </script>
 
 <style scoped>
+
 .wrapper {
   display: flex;
 }
 .wrapped {
   width: 50%;
 }
+
 .center {
   display: block;
   margin-left: auto;
   margin-right: auto;
   width: 50%;
 }
+
 /* .recipe-header{
 
 } */

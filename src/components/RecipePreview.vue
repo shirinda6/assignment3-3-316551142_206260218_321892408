@@ -6,16 +6,16 @@
          <img v-if="image_load" :src="recipe.image" class="recipe-image" />
       </router-link>
         <b-card-text>
-          <b-button disabled id="btnLike" > <span v-if="recipe.userFavorite" style="color: red;">&#10084;</span>
-              <span v-else style="color: #808080;">&#10084;</span>
+          <b-button disabled id="btnLike" > <span v-if="recipe.userFavorite" style="color:  #ff3232">&#10084;</span>
+              <span v-else style="color:white;">&#10084;</span>
               </b-button>
           <div class="recipe-footer">
             <div :title="recipe.title" class="recipe-title" v-bind:style="{color: activeColor}">
               {{ recipe.title }}
             </div>
-            <ul class="recipe-overview" >
+            <ul class="recipe-overview" style="position: absolute; bottom: 0;" >
               <li><b-icon icon="clock" aria-hidden="true"></b-icon> <span id="minutes">{{ recipe.readyInMinutes }}</span> min</li>
-              <li><b-icon icon="hand-thumbs-up" aria-hidden="true"></b-icon> {{ recipe.popularity }}</li>
+              <li><b-icon icon="hand-thumbs-up" aria-hidden="true"></b-icon><span id="like"> {{ recipe.popularity }}</span> </li>
               <!-- <li><b-button disabled style="background-color:white; border-color:white;"> <span v-if="recipe.userView" style="color: red">&#128065;</span>
               <span v-else style="color: #808080;">&#128065;</span>
               </b-button></li> -->
@@ -55,7 +55,7 @@ export default {
 <style scoped>
 .recipe-preview {
   display: inline-block;
-  width: 100%;
+  width: 110%;
   height: 100%;
   position: relative;
   /* margin: 5px 5px; */
@@ -77,6 +77,7 @@ export default {
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
+  
 }
 
 .recipe-image{
@@ -91,7 +92,7 @@ export default {
 
 
 .recipe-preview .recipe-footer .recipe-title {
-  padding: 10px 10px;
+  padding: 3px 10px;
   width: 100%;
   font-size: 12pt;
   text-align: left;
@@ -99,6 +100,8 @@ export default {
   overflow: hidden;
   -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
+
+
 }
 
 
@@ -119,6 +122,7 @@ export default {
   flex: 1 auto;
   table-layout: fixed;
   margin-bottom: 0px;
+  font-size: 12pt;
 }
 
 .recipe-preview .recipe-footer ul.recipe-overview li {
@@ -134,17 +138,21 @@ export default {
   text-align: center;
 }
 
-#minutes{
-  color: #ff3333;
+#minutes,#like{
+  color: #000000;
   font-family: monospace;
+  font-size: 14pt;
+  font-weight: bold;
+
 }
 
 #btnLike{
-  border: 2px solid rgb(2, 150, 194);
-  background-color: #01838f;
-  box-shadow: 0 1px 5px 5px #6ceeff, 0 0 5px 5px white ;
+  border: 2px solid #a6babd;
+  background-color:rgb(25, 43, 43);
+  box-shadow: 0 1px 3px 3px #bdd8d9, 0 0 3px 2px #defdfe;
   margin: -15% 0 0 70%;
   border-radius: 50%;
   font-size: larger;
+  
 }
 </style>

@@ -2,20 +2,20 @@
   <div id="app"> 
     <div>
       <b-navbar toggleable="lg" type="dark" variant="dark">
-        <b-navbar-brand href="#">sal-recipes</b-navbar-brand>
+        <b-navbar-brand href="#" id="brand">sal-recipes</b-navbar-brand>
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
         <b-collapse id="nav-collapse" is-nav>
-          <b-navbar-nav style="padding-left: 5%">
-            <b-nav-item :to="{ name: 'main' }">Main</b-nav-item>
-            <b-nav-item href="#">About</b-nav-item>
-            <b-nav-item size="sm" class="my-2 my-sm-0" :to="{ name: 'search' }">Search</b-nav-item>
+          <b-navbar-nav style="padding-left: 8%">
+            <b-nav-item :to="{ name: 'main' }" >Main</b-nav-item>
+            <b-nav-item href="#" style="margin-left:4%;">About</b-nav-item>
+            <b-nav-item size="sm" class="my-2 my-sm-0" :to="{ name: 'search' }" style="margin-left:4%;">Search</b-nav-item>
             <span v-if="!$root.store.username" class="userConnect">
               Guest:
-              <b-nav-item :to="{ name: 'register' }">Register</b-nav-item>
-              <b-nav-item :to="{ name: 'login' }">Login</b-nav-item>
+              <b-nav-item :to="{ name: 'register' }" style="margin-left:4%;">Register</b-nav-item>
+              <b-nav-item :to="{ name: 'login' }" style="margin-left:4%;">Login</b-nav-item>
             </span>
-            <span v-else class="userConnect">
-              <b-nav-item-dropdown text="Personal" right>
+            <span v-else class="userConnect" style="margin-left:4%;">
+              <b-nav-item-dropdown text="Personal" right >
                 <b-dropdown-item :to="{ name: 'MyFavorites' }">Favorites</b-dropdown-item>
                 <b-dropdown-item :to="{ name: 'MyPrivate' }">Private</b-dropdown-item>
                 <b-dropdown-item :to="{ name: 'MyFamily' }">La Familia</b-dropdown-item>
@@ -23,10 +23,10 @@
               <!-- <b-button size="sm" class="my-2 my-sm-0" @click="showModal">create Recipe</b-button>
               {{ $root.store.username }}: <button @click="Logout">Logout</button> -->
             <!-- </span> -->
-            <b-button style="background-color:#D3D3D3;" size="sm" class="my-2 my-sm-0" @click="showModal">create Recipe</b-button>          
+            <b-button style="background-color:#D3D3D3;margin-left:8%;" size="sm" class="my-2 my-sm-0" @click="showModal">create Recipe</b-button>          
             </span>
-            <span  v-if="$root.store.username" style="margin-left:550px;">
-                <button variant="outline-info" style="background-color:	#D3D3D3;border:3px solid #00FFFF;border-radius: 25px; width: 170%;height: 100%;" class="mb-2" @click="Logout">
+            <span  v-if="$root.store.username" style="margin-left:70%;">
+                <button variant="outline-info" style="background-color:	#D3D3D3;border:3px solid #00FFFF;border-radius: 25px; width: 170%;height: 95%;" class="mb-2" @click="Logout">
                   <b-icon icon="power" aria-hidden="true">
                 </b-icon> {{ $root.store.username }}</button>
               <!-- {{ $root.store.username }}: <button @click="Logout">Logout</button> -->
@@ -152,9 +152,12 @@ export default {
 
 <style lang="scss">
 @import "@/scss/form-style.scss";
+@import url('https://fonts.googleapis.com/css2?family=Amaranth&family=Lemonada:wght@400;500&family=Mali:wght@200&family=Shadows+Into+Light+Two&family=Syncopate&display=swap');
 
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Brush Script MT', cursive;
+  font-size: 14pt;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
@@ -162,7 +165,7 @@ export default {
 }
 
 #nav {
-  padding: 30px;
+  padding: 3px;
 }
 
 #nav a {
@@ -176,6 +179,11 @@ export default {
 
 .userConnect{
   display: flex;
+}
+#brand{
+    font-size: 20pt;
+    font-family: 'Syncopate', sans-serif;
+
 }
 
 </style>

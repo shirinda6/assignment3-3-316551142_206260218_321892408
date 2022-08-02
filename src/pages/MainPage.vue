@@ -3,15 +3,17 @@
     <h1 class="title">Main Page</h1>  
     <div style="display: flex;">
     <div style="width: 50%; float: left;">
-    <RecipePreviewList title="Randome Recipes" class="RandomRecipes center" :key="componentKey" />
-    <b-button @click="reload">
+    <RecipePreviewList style="text-align: center;  font-family: Comfortaa;" title="Randome Recipes " class="RandomRecipes center" :key="componentKey" />
+    <b-button id="random" style="margin-left:50% ;margin-top: -10%;" @click="reload">
       <b-icon icon="shuffle" aria-hidden="true"></b-icon>
     </b-button>
   </div>
-<div style="width: 50%; float: right;">
+<div style="width: 50%;  font-family: Comfortaa;
+ float: right;">
     <!-- <router-link v-if="!$root.store.username" to="/login" tag="button">You need to Login to vue this</router-link> -->
     <RecipeViewList
-      title="Last Viewed Recipes"
+       style="text-align: center;"  
+       title="Last Viewed Recipes"
       :class="{
         RandomRecipes: true,
         // blur: !$root.store.username,
@@ -61,6 +63,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import url('https://fonts.googleapis.com/css2?family=Amaranth&family=Comfortaa:wght@300&family=Lemonada:wght@400;500&family=Mali:wght@200&family=Shadows+Into+Light+Two&family=Syncopate&display=swap');
 .RandomRecipes {
   margin: 10px 0 10px;
 }
@@ -71,5 +74,12 @@ export default {
 ::v-deep .blur .recipe-preview {
   pointer-events: none;
   cursor: default;
+}
+#random{
+  font-family: Comfortaa;
+}
+#random:hover{
+  background-color:rgb(205, 205, 205);
+  color: black;
 }
 </style>
