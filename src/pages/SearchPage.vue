@@ -18,13 +18,18 @@
       >
 </div>
 </div>
-<div style="margin: 2%; padding: 1%;">
-  <input type="radio" v-model="selected" value="5" checked> 5
-  <input type="radio" v-model="selected" value="10"> 10
-  <input type="radio" v-model="selected" value="15"> 15
+    <div>
+    <b-form-spinbutton
+      id="sb-step"
+      v-model="selected"
+      style="width:70% ;margin-top: 2%; padding: 1%;"
+      min="5"
+      max="15"
+      step="5"
+    ></b-form-spinbutton>
   </div>
     <div>
-  <b-dropdown id="filter" text="Filter" variant="primary" class="m-2" style="width: 200px !important; ">
+  <b-dropdown id="filter" text="Filter" variant="primary" class="m-2" style="width: 70% !important; ">
   <div role="tablist" class="accordion" style="min-height: 0 !important; overflow-y:auto;" >
     <b-card no-body class="mb-1" style=" width: 300px !important;">
       <b-card-header role="tab" class="p-1" header-tag="header">
@@ -114,7 +119,8 @@ import cuisines from "../assets/cuisines";
         filterintolerances:"",
         selected: '5',
         recipes: [],
-        sorted:""
+        sorted:"",
+        flag:false,
         }
   },
     mounted() {
@@ -122,6 +128,7 @@ import cuisines from "../assets/cuisines";
     this.diets.push(...diets);
     this.intolerances.push(...intolerances);
     if(this.$root.store.username && this.$root.store.lastSearch){
+      this.flag=true;
       this.recipes=this.$root.store.lastSearch.resuilts;
       let params=this.$root.store.lastSearch.paramsQuery;
       this.selected=params.numberOfRecipe;
@@ -175,7 +182,7 @@ import cuisines from "../assets/cuisines";
         const recipes = response.data.search;
         this.recipes = [];
         this.recipes.push(...recipes);
-        
+        this.flag=true;
 
         if(this.$root.store.username){
           const views= response.data.view;
