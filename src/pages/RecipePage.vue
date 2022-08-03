@@ -71,6 +71,7 @@ export default {
         this.ingredients= this.recipe.ingredients.split(",");
     else  this.ingredients.push(this.recipe.ingredients);
     console.log(this.ingredients);
+    
   }
 };
 </script>

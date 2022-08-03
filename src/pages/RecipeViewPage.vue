@@ -133,6 +133,20 @@ export default {
       };
 
       this.recipe = _recipe;
+
+      if(this.$root.store.username && this.$root.store.lastSearch){
+        console.log("before",this.$root.store.lastSearch);
+      let recipes=this.$root.store.lastSearch.resuilts;
+      recipes.forEach(element => {
+        if (element.id==this.recipe.id)
+        {
+                  console.log("yes",element);
+          element.userView=true;
+        }
+      });
+              console.log("after",this.$root.store.lastSearch);
+
+    }
       
     } catch (error) {
       console.log(error);
@@ -149,6 +163,15 @@ export default {
           {reciepeId: this.recipe.id,},{withCredentials: true}
         );
         this.activeColor="red";
+        if(this.$root.store.username && this.$root.store.lastSearch){
+      let recipes=this.$root.store.lastSearch.resuilts;
+      recipes.forEach(element => {
+        if (element.id==this.recipe.id)
+        {
+          element.userFavorite=true;
+        }
+      });
+    }
         // console.log(response);
       } catch (err) {
         console.log(err.response1);
@@ -164,6 +187,15 @@ export default {
           {reciepeId: this.recipe.id,},{withCredentials: true}
         );
         this.activeColor="grey";
+        if(this.$root.store.username && this.$root.store.lastSearch){
+      let recipes=this.$root.store.lastSearch.resuilts;
+      recipes.forEach(element => {
+        if (element.id==this.recipe.id)
+        {
+          element.userFavorite=false;
+        }
+      });
+    }
         // console.log(response);
       } catch (err) {
         console.log(err.response);
