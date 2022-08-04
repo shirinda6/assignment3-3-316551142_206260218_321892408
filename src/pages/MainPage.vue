@@ -1,6 +1,5 @@
 <template>
   <div class="container" style="max-width: 1980px; width: 100%">
-    <h1 class="title">Main Page</h1>  
     <div style="display: flex;">
     <div style="width: 50%; float: left;">
     <RecipePreviewList style="text-align: center;  font-family: Comfortaa;" title="Randome Recipes " class="RandomRecipes center" :key="componentKey" />

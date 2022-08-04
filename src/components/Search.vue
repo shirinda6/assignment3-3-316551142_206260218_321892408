@@ -21,18 +21,11 @@
           step="5"
         ></b-form-spinbutton>
       </div>
-      <div style="margin-top: 1%;">
-        <b-dropdown
-          id="filter"
-          text="Filter"
-          dropdown
-          variant="dark"
-          type="dark"
-          class="m-2"
-          style="width: 90% !important; "
-        >
-          <div role="tablist" class="accordion">
-            <b-card no-body class="mb-1" style=" width: 100% !important;">
+      <div style="margin-top: 2%;">
+        <b-button v-b-toggle.sidebar-1 variant="dark" style="width: 90% !important;" @click="showSidebar=true;">Filter</b-button>
+        <b-sidebar id="sidebar-1" :visible="showSidebar" title="Select for filter"  >
+          <div role="tablist" class="accordion"> 
+            <b-card no-body class="mb-1" >
               <b-card-header role="tab" class="p-1" header-tag="header">
                 <b-button block v-b-toggle.cuisines
                   ><b-icon icon="chevron-down" aria-hidden="true"></b-icon>
@@ -96,8 +89,8 @@
                 </b-card-body>
               </b-collapse>
             </b-card>
-          </div>
-        </b-dropdown>
+          </div> 
+        </b-sidebar>
       </div>
     </div>
     <div class="col" style="float: left;">
@@ -125,6 +118,7 @@ export default {
       diets: [],
       intolerances: [],
       recipes: [],
+      showSidebar:false,
       // filtercuisines:[],
       // filterdiets:[],
       // filterintolerances:[],
@@ -212,6 +206,7 @@ export default {
 
           this.$root.store.Search(last);
         }
+        this.showSidebar=false;
         this.$emit("res", this.recipes);
       } catch (error) {
         console.log(error);
@@ -222,8 +217,5 @@ export default {
 </script>
 
 <style>
-.dropdown-menu {
-  max-height: 200px;
-  overflow-y: auto;
-}
+
 </style>

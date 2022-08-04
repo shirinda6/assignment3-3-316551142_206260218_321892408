@@ -1,8 +1,8 @@
 <template>
   <div class="container" style="max-width: 1980px; width: 100%">
     <h1 class="title" style="margin-left:45%; margin-top: 3%;">Search</h1>
-    <div v-if="flag">
-      <div style="width: 30%; float: left; margin-top: 2%;">
+    <div>
+      <div style=" margin-top: 2%; margin-left: 25%;">
         <Search1
           @res="showResult"
           :selected="selected"
@@ -13,41 +13,56 @@
         />
       </div>
 
-      <div style="width: 70%; float: right;">
-        <div style="margin-left: 65%; margin-bottom: 2%;">
-          sort by:
-          <input
-            type="radio"
-            v-model="sorted"
-            value="readyInMinutes"
-            @click="sortby('readyInMinutes')"
-          />preparation time
-          <input
-            type="radio"
-            v-model="sorted"
-            value="popularity"
-            @click="sortby('popularity')"
-          />popularity
+      <div v-if="flag" style=" margin-top: 6%;">
+        <div class="sort" style="margin-left: 70%; margin-bottom: 2%;">
+           <b-form-select class="subjectBy" v-model="sorted" v-on:change="sortby" :options="options">
+           <template #first>
+            <b-form-select-option :value="null" disabled>--   Select for sorting   --</b-form-select-option>
+            </template>
+           </b-form-select>
+           <span class="order" v-if="asc" @click="sortOrder" @focus="toggle()" v-blur="remove" v-bind:style="{borderColor: borderStyle}">
+            <svg 
+              xmlns="http://www.w3.org/2000/svg"
+              width="26"
+              height="26"
+              fill="currentColor"
+              class="bi bi-sort-up"
+              viewBox="0 0 16 16"
+            >
+            
+              <path
+                d="M3.5 12.5a.5.5 0 0 1-1 0V3.707L1.354 4.854a.5.5 0 1 1-.708-.708l2-1.999.007-.007a.498.498 0 0 1 .7.006l2 2a.5.5 0 1 1-.707.708L3.5 3.707V12.5zm3.5-9a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zM7.5 6a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5zm0 3a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3zm0 3a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1z"
+              /></svg>
+              </span
+          ><span class="order" v-else @click="sortOrder">
+            <svg 
+              xmlns="http://www.w3.org/2000/svg"
+              width="26"
+              height="26"
+              fill="currentColor"
+              class="bi bi-sort-down"
+              viewBox="0 0 16 16"
+            >
+            
+              <path
+                d="M3.5 2.5a.5.5 0 0 0-1 0v8.793l-1.146-1.147a.5.5 0 0 0-.708.708l2 1.999.007.007a.497.497 0 0 0 .7-.006l2-2a.5.5 0 0 0-.707-.708L3.5 11.293V2.5zm3.5 1a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zM7.5 6a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5zm0 3a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3zm0 3a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1z"
+              />
+            </svg>
+          </span>
+          
         </div>
         <b-container>
           <b-row>
-            <b-card-group class="col-md-4" v-for="r in recipes" :key="r.id">
+            <b-card-group
+              class="col-md-4 mt-4"
+              v-for="r in recipes"
+              :key="r.id"
+            >
               <RecipePreview class="recipePreview" :recipe="r" />
             </b-card-group>
           </b-row>
         </b-container>
       </div>
-    </div>
-
-    <div v-else style="margin-top: 2%;margin-left: 20%;">
-      <Search1
-        @res="showResult"
-        :selected="selected"
-        :foodName="foodName"
-        :filtercuisines="filtercuisines"
-        :filterdiets="filterdiets"
-        :filterintolerances="filterintolerances"
-      />
     </div>
   </div>
 </template>
@@ -65,8 +80,14 @@ export default {
   data() {
     return {
       recipes: [],
-      sorted: "",
+      borderStyle:"#25383C",
       flag: false,
+      asc:true,
+      sorted:null,
+      options:[
+        { value: 'popularity', text: 'popularity' },
+        { value: 'preparation time', text: 'preparation time' }
+      ],
       selected: 5,
       foodName: "",
       filtercuisines: [],
@@ -93,20 +114,58 @@ export default {
       this.recipes = data;
       this.flag = true;
     },
-    sortby(field) {
-      if (field == "popularity")
-        this.recipes.sort((a, b) => (a.popularity < b.popularity ? -1 : 1));
-      else
-        this.recipes = this.recipes.sort((a, b) =>
-          a.readyInMinutes < b.readyInMinutes ? -1 : 1
-        );
+    sortby() {
+      if (this.sorted == "popularity"){
+        if(this.asc==true)
+          this.recipes.sort((a, b) => (a.popularity <= b.popularity ? -1 : 1));
+        else this.recipes.sort((a, b) => (a.popularity > b.popularity ? -1 : 1));
+      }
+      else {
+          if(this.asc==true)
+            this.recipes = this.recipes.sort((a, b) =>
+            a.readyInMinutes <= b.readyInMinutes ? -1 : 1
+          );
+          else this.recipes = this.recipes.sort((a, b) =>
+            a.readyInMinutes > b.readyInMinutes ? -1 : 1
+          );
+      }
     },
+    sortOrder(){
+      this.asc=!this.asc;
+      if(this.sorted!=null)this.sortby();
+    },
+    toggle(){
+      borderStyle="rgba(65, 208, 248, 0.868)"
+    }
   },
 };
 </script>
 <style>
-.m-2 .dropdown-menu {
-  max-height: 300px;
-  overflow-y: auto;
+.order{
+  cursor: pointer;
+  /* margin-left: 2%; */
+  border:2px solid ;
+  /* border-color: #25383C; */
+  border-radius: 10%;
+  padding-bottom: 7px;
+  padding-right: 4px;
+  padding-left: 4px;
+  padding-top: 2.5px;
+  /* margin-top: 1%;
+  margin-bottom: 1%; */
+  position: relative;
+  background-color: rgba(248, 186, 41, 0.868) ;
+}
+
+.subjectBy{
+  width: 85.5%;
+  border-color:#25383C;
+  border-width: 2px;
+  background-color: rgba(248, 186, 41, 0.868) ;
+}
+.sort{
+  background-color: rgba(164, 158, 148, 0.868);
+  box-shadow: 4px 3px 8px 5px rgba(164, 158, 148, 0.868), 1px 2px 10px 10px rgba(243, 243, 243, 0.85);
+  margin-right: 8.5%;
 }
 </style>

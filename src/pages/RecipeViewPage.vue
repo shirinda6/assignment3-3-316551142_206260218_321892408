@@ -10,11 +10,7 @@
                 :disabled="!this.$root.store.username"
                 v-bind:style="{ color: activeColor }"
                 v-on:click="MarkFavorite">
-              <!-- <b-button
-               
-              > -->
-                &#10084;
-              <!-- </b-button> -->
+               <span id="textFavorite"> &#10084;</span>
             </div>
         <div style="margin-top: 45%">
           <ul class="details" v-bind:style="countList"
@@ -86,7 +82,7 @@
           <div >
             <span style="font-size: 20pt;">Instructions:</span>
            
-            <ol style="counter-reset: section; list-style: none; margin-top: 2%;">
+            <ol style="counter-reset: section; margin-top: 2%; list-style:none;  ">
               <li class="ins" v-for="s in recipe._instructions" :key="s.number">
                 {{ s.step }}
               </li>
@@ -188,7 +184,11 @@ export default {
       };
 
       this.recipe = _recipe;
-      this.size=this.recipe.extendedIngredients.length/2;
+      let len=this.recipe.extendedIngredients.length;
+      this.size=len/2;
+      if (len%2!=0){
+        this.size++;
+      }
       if(this.recipe.vegan ){
         this.countr-=5;
       }
@@ -274,13 +274,14 @@ export default {
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Amaranth&family=Comfortaa:wght@300&family=Lemonada:wght@400;500&family=Mali:wght@200&family=Shadows+Into+Light+Two&family=Syncopate&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200&family=Open+Sans:wght@300&display=swap');
 
 .wrapper {
   display: flex;
   font-size: 14pt;
 }
 .wrapped {
-  width: 40%;
+  width: 50%;
 } 
 .center {
   display: block;
@@ -301,12 +302,12 @@ export default {
   display: flex;
   /* float: center; */
   /* margin-left: 35%; */
-
   font-size: 25pt;
 }
 
 li{
   padding: 1%;
+  font-size: 14pt;
 }
 
 #fav{
@@ -315,7 +316,14 @@ li{
  -webkit-text-stroke: 2px white;
   margin-right: 67%;
     margin-top: -50%;
+    cursor: pointer;
+
 }
+#textFavorite{
+      text-shadow: 0 0 3px #ffffff, 0 0 7px #0000FF;
+
+}
+
 
 .ins:before {
   content: counter(section);
@@ -323,9 +331,16 @@ li{
   display: inline-block;
   width: 40px;
   height: 40px;
-  margin: 0 10px 0 0;
+  /* margin: 0 10px 0 0; */
   border: 2px solid #ccc;
   border-radius: 100%;
   text-align: center;
+   position: absolute;
+   left: -3.5%;
+   padding-top: 0.2%;
 }
+.ins{
+  position: relative;
+  margin-left: 1%;
+} 
 </style>

@@ -20,16 +20,12 @@
                 <b-dropdown-item :to="{ name: 'MyPrivate' }">Private</b-dropdown-item>
                 <b-dropdown-item :to="{ name: 'MyFamily' }">La Familia</b-dropdown-item>
               </b-nav-item-dropdown>
-              <!-- <b-button size="sm" class="my-2 my-sm-0" @click="showModal">create Recipe</b-button>
-              {{ $root.store.username }}: <button @click="Logout">Logout</button> -->
-            <!-- </span> -->
-            <b-button style="background-color:#D3D3D3;margin-left:8%;" size="sm" class="my-2 my-sm-0" @click="showModal">create Recipe</b-button>          
+            <b-nav-item style="margin-left:4%;display: inline-block; white-space: nowrap;"   @click="showModal">Create Recipe</b-nav-item>          
             </span>
-            <span  v-if="$root.store.username" style="margin-left:70%;">
+            <span  v-if="$root.store.username" style="margin-left:50%;">
                 <button variant="outline-info" style="background-color:	#D3D3D3;border:3px solid #00FFFF;border-radius: 25px; width: 170%;height: 95%;" class="mb-2" @click="Logout">
                   <b-icon icon="power" aria-hidden="true">
                 </b-icon> {{ $root.store.username }}</button>
-              <!-- {{ $root.store.username }}: <button @click="Logout">Logout</button> -->
             </span>
           </b-navbar-nav>
         </b-collapse>
