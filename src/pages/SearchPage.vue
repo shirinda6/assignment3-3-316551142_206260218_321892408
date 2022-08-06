@@ -1,8 +1,8 @@
 <template>
   <div class="container" style="max-width: 1980px; width: 100%">
-    <h1 class="title" style="margin-left:45%; margin-top: 3%;">Search</h1>
+    <h1 class="title" style="margin-left:40%; margin-top: 3%;font-size: 36pt;font-family: Comfortaa;">Search</h1>
     <div>
-      <div style=" margin-top: 2%; margin-left: 25%;">
+      <div style=" margin-top: 2%; margin-left: 27%;">
         <Search1
           @res="showResult"
           :selected="selected"
@@ -20,7 +20,7 @@
             <b-form-select-option :value="null" disabled>--   Select for sorting   --</b-form-select-option>
             </template>
            </b-form-select>
-           <span class="order" v-if="asc" @click="sortOrder" @focus="toggle()" v-blur="remove" v-bind:style="{borderColor: borderStyle}">
+           <span class="order" v-if="asc" @click="sortOrder" >
             <svg 
               xmlns="http://www.w3.org/2000/svg"
               width="26"
@@ -134,18 +134,17 @@ export default {
       this.asc=!this.asc;
       if(this.sorted!=null)this.sortby();
     },
-    toggle(){
-      borderStyle="rgba(65, 208, 248, 0.868)"
-    }
   },
 };
 </script>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Amaranth&family=Comfortaa:wght@300&family=Lemonada:wght@400;500&family=Mali:wght@200&family=Shadows+Into+Light+Two&family=Syncopate&display=swap');
+
 .order{
   cursor: pointer;
   /* margin-left: 2%; */
   border:2px solid ;
-  /* border-color: #25383C; */
+  border-color: #25383C;
   border-radius: 10%;
   padding-bottom: 7px;
   padding-right: 4px;
@@ -155,6 +154,7 @@ export default {
   margin-bottom: 1%; */
   position: relative;
   background-color: rgba(248, 186, 41, 0.868) ;
+  /* background-color:rgb(76, 158, 252); */
 }
 
 .subjectBy{
@@ -163,9 +163,16 @@ export default {
   border-width: 2px;
   background-color: rgba(248, 186, 41, 0.868) ;
 }
+.subjectBy:focus{
+  outline-style: none !important;
+  box-shadow: none;
+  outline: none;
+  border-color:#25383C;
+}
 .sort{
   background-color: rgba(164, 158, 148, 0.868);
   box-shadow: 4px 3px 8px 5px rgba(164, 158, 148, 0.868), 1px 2px 10px 10px rgba(243, 243, 243, 0.85);
   margin-right: 8.5%;
+  /* color:rgba(216, 151, 0, 0.968) */
 }
 </style>

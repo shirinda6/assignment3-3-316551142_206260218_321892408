@@ -21,8 +21,8 @@
           step="5"
         ></b-form-spinbutton>
       </div>
-      <div style="margin-top: 2%;">
-        <b-button v-b-toggle.sidebar-1 variant="dark" style="width: 90% !important;" @click="showSidebar=true;">Filter</b-button>
+      <div style="margin-top: -16%;margin-left: -14%;">
+        <b-button class="bt" v-b-toggle.sidebar-1 variant="dark" style="font-size: 20pt;height: 80px;width: 10%;border-radius: 10%;background-color:rgb(76, 158, 252);" @click="showSidebar=true;"><b-icon icon="filter" aria-hidden="true"></b-icon></b-button>
         <b-sidebar id="sidebar-1" :visible="showSidebar" title="Select for filter"  >
           <div role="tablist" class="accordion"> 
             <b-card no-body class="mb-1" >
@@ -95,10 +95,11 @@
     </div>
     <div class="col" style="float: left;">
       <b-button
+        class="bt"
         type="submit"
-        variant="primary"
+        variant="dark"
         @click="SearchRecipe"
-        style=" margin-top: 10%; border-radius: 50%; height:40%;"
+        style=" margin-top: 2%; background-color:rgb(76, 158, 252);margin-left:-10%; border-radius: 50%; width: 25%;height:90%;font-size: 20pt;"
         ><b-icon icon="search" aria-hidden="true"></b-icon
       ></b-button>
     </div>
@@ -217,5 +218,7 @@ export default {
 </script>
 
 <style>
-
+.bt:hover{
+ color: #25383C;;
+}
 </style>

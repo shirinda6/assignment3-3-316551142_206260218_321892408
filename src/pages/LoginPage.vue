@@ -1,7 +1,7 @@
 <template>
-  <div class="container" style="max-width: 1980px; width: 100%">
-    <h1 class="title">Login</h1>
-    <b-form @submit.prevent="onLogin">
+  <div class="container" style="max-width: 760px; width: 100%">
+    <h1 class="title"  style="font-size: 36pt; margin-left:35%; margin-top: 3%;font-family: Comfortaa;">Login</h1>
+    <b-form style="padding-top: 5%;" @submit.prevent="onLogin">
       <b-form-group
         id="input-group-Username"
         label-cols-sm="3"
@@ -38,12 +38,11 @@
 
       <b-button
         type="submit"
-        variant="primary"
-        style="width:100px;display:block;"
-        class="mx-auto w-100"
+        variant="dark"
+        style="width:75%;margin-left: 25%;display:block;background-color:rgb(76, 158, 252);"
         >Login</b-button
       >
-      <div class="mt-2">
+      <div class="mt-2" style="font-size: medium;margin-left: 25%">
         Do not have an account yet?
         <router-link to="register"> Register in here</router-link>
       </div>
@@ -132,6 +131,8 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+@import url('https://fonts.googleapis.com/css2?family=Amaranth&family=Comfortaa:wght@300&family=Lemonada:wght@400;500&family=Mali:wght@200&family=Shadows+Into+Light+Two&family=Syncopate&display=swap');
+
 .container {
   max-width: 400px;
 }

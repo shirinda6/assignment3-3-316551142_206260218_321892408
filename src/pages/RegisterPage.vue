@@ -1,7 +1,7 @@
 <template>
-  <div class="container" style="max-width: 1980px; width: 100%">
-    <h1 class="title">Register</h1>
-    <b-form @submit.prevent="onRegister" @reset.prevent="onReset">
+  <div class="container" style="max-width: 760px; width: 100%">
+    <h1 class="title" style="margin-left:35%; margin-top: 2%;font-size: 36pt;font-family: Comfortaa;">Register</h1>
+    <b-form style="padding-top: 1%;" @submit.prevent="onRegister" @reset.prevent="onReset">
       <b-form-group
         id="input-group-username"
         label-cols-sm="3"
@@ -142,15 +142,15 @@
         </b-form-invalid-feedback>
         </b-form-group>
 
-      <b-button type="reset" variant="danger">Reset</b-button>
+      <b-button style="width:250px;border-color: black;margin-left: 25%;" type="reset" variant="danger">Reset</b-button>
       <b-button
         type="submit"
-        variant="primary"
-        style="width:250px;"
-        class="ml-5 w-75"
+        variant="dark"
+        style="width:250px;background-color:rgb(76, 158, 252);margin-left: 6%;"
+        
         >Register</b-button
       >
-      <div class="mt-2">
+      <div class="mt-2" style="font-size: medium;margin-left: 25%">
         You have an account already?
         <router-link to="login"> Log in here</router-link>
       </div>
@@ -290,6 +290,8 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+@import url('https://fonts.googleapis.com/css2?family=Amaranth&family=Comfortaa:wght@300&family=Lemonada:wght@400;500&family=Mali:wght@200&family=Shadows+Into+Light+Two&family=Syncopate&display=swap');
+
 .container {
   max-width: 500px;
 }

@@ -31,7 +31,7 @@
         </b-collapse>
       </b-navbar>
     </div>      
-    <b-modal id="modal-1" ref="my-modal1" title="Create Recipe" @ok="create">
+    <b-modal size="lg" id="modal-1" ref="my-modal1" title="Create Recipe" @ok="create">
       <CreateRecipe ref="createRecipe" />
     </b-modal>
     <router-view />
@@ -152,7 +152,7 @@ export default {
 
 #app {
   font-family: 'Brush Script MT', cursive;
-  font-size: 14pt;
+  font-size: 12pt;
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
