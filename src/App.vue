@@ -22,7 +22,7 @@
               </b-nav-item-dropdown>
             <b-nav-item style="margin-left:4%;display: inline-block; white-space: nowrap;"   @click="showModal">Create Recipe</b-nav-item>          
             </span>
-            <span  v-if="$root.store.username" style="margin-left:50%;">
+            <span  v-if="$root.store.username" style="margin-left:75%;">
                 <button variant="outline-info" style="background-color:	#D3D3D3;border:3px solid #00FFFF;border-radius: 25px; width: 170%;height: 95%;" class="mb-2" @click="Logout">
                   <b-icon icon="power" aria-hidden="true">
                 </b-icon> {{ $root.store.username }}</button>

@@ -1,5 +1,5 @@
 <template>
-  <div class="container" style="max-width: 1980px; width: 100%">
+  <div class="container" style="max-width: 1980px; width: 100%;margin-bottom: 3%;">
     <h1 class="title" style="margin-left:40%; margin-top: 3%;font-size: 36pt;font-family: Comfortaa;">Search</h1>
     <div>
       <div style=" margin-top: 2%; margin-left: 27%;">
