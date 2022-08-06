@@ -5,7 +5,7 @@
         <RecipePreview class="recipePreview" :recipe="r" />
       </b-col> -->
        <b-card-group
-              class="col-md-4 mt-4 "
+              class="col-md-3 mt-4 "
               v-for="r in recipes"
               :key="r.id"
             >

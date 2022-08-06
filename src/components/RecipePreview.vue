@@ -1,6 +1,6 @@
 <template>
 
-    <b-card no-body class="recipe-preview">
+    <b-card no-body class="recipe-preview" border-variant="dark" >
       <router-link
           :to="{ name: 'recipe', params: { recipeId: recipe.id,view:recipe.userView, favorite:recipe.userFavorite } }"      >
          <img v-if="image_load" :src="recipe.image" class="recipe-image" />
