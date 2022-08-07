@@ -1,9 +1,13 @@
 <template>
-  <b-container style="max-width: 1980px; width: 100%">
-    <b-row>
-      <b-col cols="2" v-for="r in recipes" :key="r.id">
-        <MyRecipePreview class="recipePreview" :recipe="r" />
-      </b-col>
+  <b-container style="max-width: 1980px; width: 85%;margin-top: 3%;margin-bottom: 3%;">
+  <b-row>
+    <b-card-group
+              class="col-md-3 mt-4"
+              v-for="r in recipes"
+              :key="r.id"
+            >
+               <MyRecipePreview class="recipePreview" :recipe="r" />
+            </b-card-group>
     </b-row>
   </b-container>
 </template>

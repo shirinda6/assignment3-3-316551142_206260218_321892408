@@ -54,9 +54,10 @@
         
         
         <!-- <div class="wrapper"> -->
+          <div class="title">Ingredients</div>
           <div class="wrapper">
-           <span style="font-size: 20pt;">Ingredients:</span>
-            <div class="wrapped">
+           
+            <div class="wrapped" style="margin-left: 3%;">
             <ul>
               <li
                 v-for="(r, index) in recipe.extendedIngredients.slice(0, size)"
@@ -80,7 +81,7 @@
 
 
           <div >
-            <span style="font-size: 20pt;">Instructions:</span>
+            <div class="title">Instructions</div>
            
             <ol style="counter-reset: section; margin-top: 2%; list-style:none;  ">
               <li class="ins" v-for="s in recipe._instructions" :key="s.number">
@@ -107,7 +108,7 @@ export default {
       recipe: null,
       favorite: false,
       activeColor: "transparent",
-      countr: 35,
+      countr: 40,
       size:0
     };
   },
@@ -282,6 +283,8 @@ export default {
 }
 .wrapped {
   width: 50%;
+  margin-top: 3%;
+  margin-bottom: 3%;
 } 
 .center {
   display: block;
@@ -341,6 +344,7 @@ li{
 }
 .ins{
   position: relative;
-  margin-left: 1%;
+  margin-left: 3%;
 } 
+.title{font-size: 20pt; background-color: lightgray; text-align: center;}
 </style>

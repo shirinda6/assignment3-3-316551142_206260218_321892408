@@ -1,4 +1,28 @@
 <template>
+ <b-card no-body class="recipe-preview" border-variant="dark" >
+  <router-link
+          :to="{ name: 'RecipePage', params: { recipe: recipe } }">
+         <img v-if="image_load" :src="recipe.image" class="recipe-image" />
+      </router-link>
+      <b-card-text>
+        <div class="recipe-footer">
+          <div :title="recipe.recipeName" class="recipe-title">
+              {{ recipe.recipeName }}
+            </div>
+            <ul class="recipe-overview" style="position: absolute; bottom: 0;" >
+              <li><b-icon icon="clock" aria-hidden="true"></b-icon> <span id="minutes">{{ recipe.preparationTime }}</span> min</li>
+
+            </ul>
+          </div>
+      </b-card-text>
+ </b-card>
+
+
+
+
+
+
+<!-- 
   <router-link
     :to="{ name: 'RecipePage', params: { recipe: recipe } }"
     class="recipe-preview"
@@ -11,10 +35,10 @@
         {{ recipe.title }}
       </div>
       <ul class="recipe-overview">
-        <li>{{ recipe.preparationTime }} minutes</li>
+        <li><b-icon icon="clock" aria-hidden="true"></b-icon> <span id="minutes">{{ recipe.preparationTime }}</span> min</li>
       </ul>
     </div>
-  </router-link>
+  </router-link> -->
 </template>
 
 <script>
@@ -34,30 +58,6 @@ export default {
       type: Object,
       required: true
     }
-
-    // id: {
-    //   type: Number,
-    //   required: true
-    // },
-    // title: {
-    //   type: String,
-    //   required: true
-    // },
-    // readyInMinutes: {
-    //   type: Number,
-    //   required: true
-    // },
-    // image: {
-    //   type: String,
-    //   required: true
-    // },
-    // aggregateLikes: {
-    //   type: Number,
-    //   required: false,
-    //   default() {
-    //     return undefined;
-    //   }
-    // }
   }
 };
 </script>
@@ -65,14 +65,14 @@ export default {
 <style scoped>
 .recipe-preview {
   display: inline-block;
-  width: 90%;
+  width: 110%;
   height: 100%;
   position: relative;
-  margin: 10px 10px;
+  /* margin: 5px 5px; */
 }
 .recipe-preview > .recipe-body {
   width: 100%;
-  height: 200px;
+  height: 150px;
   position: relative;
 }
 
@@ -82,8 +82,8 @@ export default {
   margin-top: auto;
   margin-bottom: auto;
   display: block;
-  width: 48%;
-  height: auto;
+  width: 100%;
+  /* height: auto; */
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
@@ -91,16 +91,20 @@ export default {
 
 .recipe-preview .recipe-footer {
   width: 100%;
-  height: 50%;
+  height: 150px;
   overflow: hidden;
 }
 
+.recipe-image{
+  width:100%
+}
+
 .recipe-preview .recipe-footer .recipe-title {
-  padding: 10px 10px;
+  padding: 3px 10px;
   width: 100%;
   font-size: 12pt;
   text-align: left;
-  white-space: nowrap;
+  /* white-space: nowrap; */
   overflow: hidden;
   -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
@@ -123,6 +127,7 @@ export default {
   flex: 1 auto;
   table-layout: fixed;
   margin-bottom: 0px;
+  font-size: 12pt;
 }
 
 .recipe-preview .recipe-footer ul.recipe-overview li {
@@ -136,5 +141,13 @@ export default {
   width: 90px;
   display: table-cell;
   text-align: center;
+}
+
+#minutes{
+  color: #000000;
+  font-family: monospace;
+  font-size: 14pt;
+  font-weight: bold;
+
 }
 </style>

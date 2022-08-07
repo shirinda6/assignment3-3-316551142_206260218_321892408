@@ -3,12 +3,10 @@
     <div style="width: 60%; float: left;">
       <div>
         <div>
-          <b-form-input
-            style="width: 90%"
-            id="foodName"
-            placeholder="Enter food name"
-            v-model="foodName"
-          ></b-form-input>
+          <b-form-input style="width: 90%"
+    id="foodName"
+    placeholder="Enter food name"
+    v-model="foodName"></b-form-input>
         </div>
       </div>
       <div>
@@ -21,8 +19,8 @@
           step="5"
         ></b-form-spinbutton>
       </div>
-      <div style="margin-top: -16%;margin-left: -14%;">
-        <b-button class="bt" v-b-toggle.sidebar-1 variant="dark" style="font-size: 20pt;height: 80px;width: 10%;border-radius: 10%;background-color:rgb(76, 158, 252);" @click="showSidebar=true;"><b-icon icon="filter" aria-hidden="true"></b-icon></b-button>
+      <div style="margin-top: -16%;margin-left: -14%; width: 15%;">
+        <b-button class="bt" v-b-toggle.sidebar-1 variant="dark" style="font-size: 20pt;height: 80px;border-radius: 10%;background-color:rgb(76, 158, 252);" @click="showSidebar=true;"><b-icon icon="filter" aria-hidden="true"></b-icon></b-button>
         <b-sidebar id="sidebar-1" :visible="showSidebar" title="Select for filter"  >
           <div role="tablist" class="accordion"> 
             <b-card no-body class="mb-1" >

@@ -10,9 +10,11 @@
             <b-nav-item href="#" style="margin-left:4%;">About</b-nav-item>
             <b-nav-item size="sm" class="my-2 my-sm-0" :to="{ name: 'search' }" style="margin-left:4%;">Search</b-nav-item>
             <span v-if="!$root.store.username" class="userConnect">
-              Guest:
               <b-nav-item :to="{ name: 'register' }" style="margin-left:4%;">Register</b-nav-item>
               <b-nav-item :to="{ name: 'login' }" style="margin-left:4%;">Login</b-nav-item>
+              <b-nav-item disabled style="margin-left:4%;display: inline-block; white-space: nowrap; color:white">
+              Hello guest
+            </b-nav-item>
             </span>
             <span v-else class="userConnect" style="margin-left:4%;">
               <b-nav-item-dropdown text="Personal" right >
@@ -22,6 +24,7 @@
               </b-nav-item-dropdown>
             <b-nav-item style="margin-left:4%;display: inline-block; white-space: nowrap;"   @click="showModal">Create Recipe</b-nav-item>          
             </span>
+            
             <span  v-if="$root.store.username" style="margin-left:70%;">
                 <button variant="outline-info" style="background-color:	#D3D3D3;border:3px solid #00FFFF; border-radius: 25px; width: 170%;height: 95%;" class="mb-2" @click="Logout">
                   <b-icon icon="power" aria-hidden="true">
@@ -31,7 +34,7 @@
         </b-collapse>
       </b-navbar>
     </div>      
-    <b-modal size="lg" id="modal-1" ref="my-modal1" title="Create Recipe" @ok="create">
+    <b-modal size="lg" class="modal" id="modal-1" ref="my-modal1" title="Create Recipe" @ok="create">
       <CreateRecipe ref="createRecipe" />
     </b-modal>
     <router-view />
@@ -73,23 +76,21 @@ export default {
         // add ml grm to amount 
         let str = "";
         let f=false;
+        let instructions="";
         for (const [key, value] of Object.entries(this.$refs.createRecipe.form.ingredients)) {
+          if(value.ingredient=='')continue;
           console.log("value",value)
           if(str!=="") {str+=",";}
-          str+=`${value.ingredient}:${value.amount}`;
-          // if(key==0)
-          //   continue;
-          // if(String(key)=="ingredient"){
-          //   if(f){
-          //     str+=","  }
-          //   f=true;
-          //   str+=`${value}:`
-          // }
-          // if(String(key)=="amount"){
-          //   str+=`${value}`
-          // }
+          str+=`${value.ingredient}:${value.amount} ${value.type}`;
         }
         console.log("str",str)
+        console.log("preparationInstructions",this.$refs.createRecipe.form.preparationInstructions);
+        for (const [key, value] of Object.entries(this.$refs.createRecipe.form.preparationInstructions)) {
+          if(value.instruction=='')continue;
+          console.log("value",value)
+          if(instructions!=="") {instructions+=",";}
+          instructions+=`${value.instruction}`;
+        }
         // call server - create recipe
         let ids="";
         try {
@@ -101,9 +102,9 @@ export default {
             recipeName: this.$refs.createRecipe.form.recipeName,
             image: this.$refs.createRecipe.form.image,
             preparationTime: this.$refs.createRecipe.form.preparationTime,
-            clickable:Object.values(this.$refs.createRecipe.form.checked).includes("c1"),
+            clickable:true,
             ingredients: str,
-            preparationInstructions:this.$refs.createRecipe.form.preparationInstructions,
+            preparationInstructions:instructions,
             numberOfDishes:this.$refs.createRecipe.form.numberOfDishes,
             vegetarian:Object.values(this.$refs.createRecipe.form.checked).includes("c2"),
             vegan: Object.values(this.$refs.createRecipe.form.checked).includes("c3"),
@@ -180,6 +181,20 @@ export default {
     font-size: 20pt;
     font-family: 'Syncopate', sans-serif;
 
+}
+
+.modal{
+    display: block !important; /* I added this to see the modal, you don't need this */
+    overflow: auto !important;
+}
+
+/* Important part */
+.modal-dialog{
+    overflow-y: initial !important
+}
+.modal-body{
+    height: 68vh;
+    overflow-y: auto;
 }
 
 </style>
