@@ -2,7 +2,7 @@
   <div class="container" style="max-width: 1980px; width: 100%">
     <div style="display: flex;">
     <div style="width: 50%; float: left;">
-    <RecipePreviewList style="text-align: center;  font-family: Comfortaa;margin-top: 3%;" title="Random Recipes " class="RandomRecipes center" :key="componentKey" />
+    <RecipePreviewList style="text-align: center;  font-family: Comfortaa;margin-top: 3%;" title="Explore this recipes" class="RandomRecipes center" :key="componentKey" />
     <b-button id="random" style="margin-left:50% ;margin-top: -10%;" @click="reload">
       <b-icon icon="shuffle" aria-hidden="true"></b-icon>
     </b-button>
@@ -12,7 +12,7 @@
     <!-- <router-link v-if="!$root.store.username" to="/login" tag="button">You need to Login to vue this</router-link> -->
     <RecipeViewList
        style="text-align: center;"  
-       title="Last Viewed Recipes"
+       title="Last watched recipes"
       :class="{
         RandomRecipes: true,
         // blur: !$root.store.username,
