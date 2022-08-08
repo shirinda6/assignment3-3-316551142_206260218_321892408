@@ -1,5 +1,5 @@
 <template>
- <b-card no-body class="recipe-preview" border-variant="dark" >
+ <b-card no-body class="recipe-preview" border-variant="dark" style="font-family: Comfortaa;" >
   <router-link
           :to="{ name: 'RecipePage', params: { recipe: recipe } }">
          <img v-if="image_load" :src="recipe.image" class="recipe-image" />
@@ -17,28 +17,6 @@
       </b-card-text>
  </b-card>
 
-
-
-
-
-
-<!-- 
-  <router-link
-    :to="{ name: 'RecipePage', params: { recipe: recipe } }"
-    class="recipe-preview"
-  >
-    <div class="recipe-body">
-      <img v-if="image_load" :src="recipe.image" class="recipe-image" />
-    </div>
-    <div class="recipe-footer">
-      <div :title="recipe.title" class="recipe-title">
-        {{ recipe.title }}
-      </div>
-      <ul class="recipe-overview">
-        <li><b-icon icon="clock" aria-hidden="true"></b-icon> <span id="minutes">{{ recipe.preparationTime }}</span> min</li>
-      </ul>
-    </div>
-  </router-link> -->
 </template>
 
 <script>
@@ -63,6 +41,8 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Amaranth&family=Comfortaa:wght@300&family=Lemonada:wght@400;500&family=Mali:wght@200&family=Shadows+Into+Light+Two&family=Syncopate&display=swap');
+
 .recipe-preview {
   display: inline-block;
   width: 110%;

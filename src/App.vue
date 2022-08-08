@@ -1,5 +1,6 @@
 <template>
-  <div id="app"> 
+  <div id="app">
+    <link rel="preload" href="/b12.jpeg" as="image"> 
     <div>
       <b-navbar toggleable="lg" type="dark" variant="dark">
         <b-navbar-brand href="#" id="brand">sal-recipes</b-navbar-brand>
@@ -7,7 +8,7 @@
         <b-collapse id="nav-collapse" is-nav>
           <b-navbar-nav style="padding-left: 8%">
             <b-nav-item :to="{ name: 'main' }" >Main</b-nav-item>
-            <b-nav-item href="#" style="margin-left:4%;">About</b-nav-item>
+            <b-nav-item :to="{ name: 'About'}" style="margin-left:4%;">About</b-nav-item>
             <b-nav-item size="sm" class="my-2 my-sm-0" :to="{ name: 'search' }" style="margin-left:4%;">Search</b-nav-item>
             <span v-if="!$root.store.username" class="userConnect">
               <b-nav-item :to="{ name: 'register' }" style="margin-left:4%;">Register</b-nav-item>
@@ -154,7 +155,12 @@ export default {
 #app {
   font-family: 'Brush Script MT', cursive;
   font-size: 12pt;
-
+  background-image: url('b12.jpeg') ;
+  background-size: cover;
+  position: relative;
+  padding-bottom: 5%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;

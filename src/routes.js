@@ -1,5 +1,6 @@
 import Main from "./pages/MainPage";
 import NotFound from "./pages/NotFoundPage";
+//import About from "./pages/About";
 
 const routes = [
   {
@@ -51,6 +52,11 @@ const routes = [
     path: "*",
     name: "notFound",
     component: NotFound,
+  },
+ {
+    path: "/About",
+    name: "About",
+    component: () => import("./pages/About"),
   },
 ];
 

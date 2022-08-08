@@ -1,15 +1,14 @@
 <template>
-  <div class="container" style="max-width: 1980px; width: 100%">
+  <div class="container" style="max-width: 1980px; width: 100%;">
     <div style="display: flex;">
     <div style="width: 50%; float: left;">
-    <RecipePreviewList style="text-align: center;  font-family: Comfortaa;margin-top: 3%;" title="Explore this recipes" class="RandomRecipes center" :key="componentKey" />
-    <b-button id="random" style="margin-left:50% ;margin-top: -10%;" @click="reload">
+    <RecipePreviewList style="text-align: center;  font-family: Comfortaa;margin-top: 3%; margin-left: -3%;" title="Explore this recipes" class="RandomRecipes center" :key="componentKey" />
+    <b-button id="random" style="margin-left:50% ;" @click="reload">
       <b-icon icon="shuffle" aria-hidden="true"></b-icon>
     </b-button>
   </div>
 <div style="width: 50%; padding-top: 0.7%; font-family: Comfortaa;
  float: right;">
-    <!-- <router-link v-if="!$root.store.username" to="/login" tag="button">You need to Login to vue this</router-link> -->
     <RecipeViewList
        style="text-align: center;"  
        title="Last watched recipes"
@@ -63,6 +62,21 @@ export default {
 
 <style lang="scss" scoped>
 @import url('https://fonts.googleapis.com/css2?family=Amaranth&family=Comfortaa:wght@300&family=Lemonada:wght@400;500&family=Mali:wght@200&family=Shadows+Into+Light+Two&family=Syncopate&display=swap');
+
+//  .container {
+//     background: url("https://inspirationfeed.com/wp-content/uploads/2019/10/Top-5-Healthy-Foods-to-Eat-in-2019.jpg") center top no-repeat fixed;
+    
+//     // padding-top: 2%;
+    
+//     position: fixed;
+//     float: center;
+//     background-image: url('background.jpg') ;
+//      background-repeat: no-repeat;
+//     background-size: cover;
+
+//     padding-bottom: 2%;
+// }
+
 .RandomRecipes {
   margin: 10px 0 10px;
 }

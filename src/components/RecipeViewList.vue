@@ -51,11 +51,6 @@ export default {
             recipe.userView=true;
             recipe.userFavorite=favorites[recipe.id];
           });
-          let last={
-            paramsQuery:params,
-            resuilts:this.recipes
-          }
-          this.$root.store.Search(last);
         }
         // console.log(this.recipes);
       } catch (error) {

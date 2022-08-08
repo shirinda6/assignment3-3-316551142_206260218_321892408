@@ -80,8 +80,8 @@
           </div>
 
 
-          <div >
-            <div class="title">Instructions</div>
+          <div class="instruction" >
+            <div v-if="recipe._instructions.length>0" class="title">Instructions</div>
            
             <ol style="counter-reset: section; margin-top: 2%; list-style:none;  ">
               <li class="ins" v-for="s in recipe._instructions" :key="s.number">
@@ -277,9 +277,17 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Amaranth&family=Comfortaa:wght@300&family=Lemonada:wght@400;500&family=Mali:wght@200&family=Shadows+Into+Light+Two&family=Syncopate&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200&family=Open+Sans:wght@300&display=swap');
 
+.container{
+  padding-bottom: 2%;
+}
+.instruction{
+    background-color: rgba(252, 252, 252, 0.795);
+
+}
 .wrapper {
   display: flex;
   font-size: 14pt;
+  background-color: rgba(252, 252, 252, 0.795);
 }
 .wrapped {
   width: 50%;
@@ -296,7 +304,8 @@ export default {
 .recipe-header {
   font-family: Comfortaa;
   text-align: center;
-  background-color: rgba(248, 186, 41, 0.868);
+  background-color: rgb(248, 186, 41);
+
  
 }
 

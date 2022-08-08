@@ -112,7 +112,10 @@ export default {
   methods: {
     showResult(data) {
       this.recipes = data;
-      this.flag = true;
+      if (this.recipes.length==0){
+        alert("Sorry, we couldn't find any reasult.\n Try another search "+String.fromCodePoint(0x1F9D0));
+      }
+      else this.flag = true;
     },
     sortby() {
       if (this.sorted == "popularity"){
