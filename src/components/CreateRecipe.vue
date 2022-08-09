@@ -9,6 +9,7 @@
         class="title"
         label="recipe name:"
         label-for="recipeName"
+        style="margin-top: -1.5%"
       >
         <b-form-input
           id="recipeName"
@@ -76,7 +77,7 @@
               v-model="$v.form.numberOfDishes.$model"
               type="number"
               min="1"
-              style="width: 90%;"
+              style="width: 94%;"
               :state="validateState('numberOfDishes')"
             ></b-form-input>
             <b-form-invalid-feedback>
@@ -87,14 +88,14 @@
       </div>
     
 <!--  checkbox:Vegetarian/ Vegan/ Gluten-->
-      <b-form-group id="input-group-4" style="margin-top: -6.5%;float: right;" v-slot="{ ariaDescribedby }">
+      <b-form-group id="input-group-4" style="margin-top: -6%;float: right;" v-slot="{ ariaDescribedby }">
         <b-form-checkbox-group
           v-model="form.checked"
           id="checkboxes-4"
           :aria-describedby="ariaDescribedby"
-          style="margin-left: -5%;"
+          style="margin-left: -10%;"
           ><label class="title" >Select diets:</label>
-          <div style="margin-top: 5%;">
+          <div style="margin-top: 5.5%;">
             <b-form-checkbox style=" " value="c2" >Vegetarian</b-form-checkbox>
             <b-form-checkbox value="c3">Vegan</b-form-checkbox>
             <b-form-checkbox value="c4">Gluten</b-form-checkbox>
@@ -210,7 +211,7 @@
             ><b-icon  style="width: 100%;" icon="dash" aria-hidden="true"></b-icon>
           </button>
         </div>
-        <div style="margin-top: -5%; margin-bottom: 2%;">
+        <div style="margin-top: -5%;">
           <b-row
               v-for="(instruction, index) in form.preparationInstructions"
               :key="index"
@@ -257,14 +258,14 @@
           @input="flag = !flag"
           value="family"
           class="title"
-          style="margin-left: 2%;"
+          style="margin-left: 2%;margin-bottom: -2%;"
           >family recipe</b-form-checkbox
         >
       </div>
       <div v-if="!flag">
        <!-- customary Prepare -->
         <b-form-group
-          style="margin-top: 2%;"
+          style="margin-top: 3%;"
           class="title"
           id="input-group-customaryPrepare"
           label-cols-sm="3"
