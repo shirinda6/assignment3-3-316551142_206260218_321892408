@@ -20,7 +20,7 @@
         ></b-form-spinbutton>
       </div>
       <div style="margin-top: -16%;margin-left: -14%; width: 15%;">
-        <b-button class="bt" v-b-toggle.sidebar-1 variant="dark" style="font-size: 20pt;height: 80px;border-radius: 10%;background-color:rgb(76, 158, 252);" @click="showSidebar=true;"><b-icon icon="filter" aria-hidden="true"></b-icon></b-button>
+        <b-button class="bt" v-b-toggle.sidebar-1 variant="dark" style="font-size: 20pt;height: 80px;border-radius: 10%;background-color:rgb(76, 158, 252);box-shadow: 0px -5px 10px 0px rgba(0, 0, 0, 0.5);" @click="showSidebar=true;"><b-icon icon="filter" aria-hidden="true"></b-icon></b-button>
         <b-sidebar id="sidebar-1" :visible="showSidebar" title="Select for filter"  >
           <div role="tablist" class="accordion"> 
             <b-card no-body class="mb-1" >
@@ -97,7 +97,7 @@
         type="submit"
         variant="dark"
         @click="SearchRecipe"
-        style=" margin-top: 2%; background-color:rgb(76, 158, 252);margin-left:-10%; border-radius: 50%; width: 25%;height:90%;font-size: 20pt;"
+        style=" margin-top: 2%;box-shadow: 0px -5px 10px 0px rgba(0, 0, 0, 0.5); background-color:rgb(76, 158, 252);margin-left:-10%; border-radius: 50%; width: 25%;height:90%;font-size: 20pt;"
         ><b-icon icon="search" aria-hidden="true"></b-icon
       ></b-button>
     </div>

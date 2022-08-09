@@ -3,11 +3,11 @@
     <div style="display: flex;">
     <div style="width: 50%; float: left;">
     <RecipePreviewList style="text-align: center;  font-family: Comfortaa;margin-top: 3%; margin-left: -3%;" title="Explore this recipes" class="RandomRecipes center" :key="componentKey" />
-    <b-button id="random" style="margin-left:50% ;" @click="reload">
+    <b-button id="random" style="margin-left:45%; box-shadow: 0px -5px 10px 0px rgba(0, 0, 0, 0.5);" @click="reload">
       <b-icon icon="shuffle" aria-hidden="true"></b-icon>
     </b-button>
   </div>
-<div style="width: 50%; padding-top: 0.7%; font-family: Comfortaa;
+<div style="width: 50%; padding-top: 0.8%; font-family: Comfortaa;
  float: right;">
     <RecipeViewList
        style="text-align: center;"  

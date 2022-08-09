@@ -27,7 +27,7 @@
             </span>
             
             <span  v-if="$root.store.username" style="margin-left:70%;">
-                <button variant="outline-info" style="background-color:	#D3D3D3;border:3px solid #00FFFF; border-radius: 25px; width: 170%;height: 95%;" class="mb-2" @click="Logout">
+                <button variant="outline-info" style="background-color:	#D3D3D3;border:4px solid #83ff6b;box-shadow: 0px -5px 10px 0px rgba(0, 0, 0, 0.5); border-radius: 25px; width: 170%;height: 95%;" class="mb-2" @click="Logout">
                   <b-icon icon="power" aria-hidden="true">
                 </b-icon> {{ $root.store.username }}</button>
             </span>

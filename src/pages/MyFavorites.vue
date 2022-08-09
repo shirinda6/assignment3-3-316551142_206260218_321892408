@@ -1,5 +1,7 @@
 <template>
   <b-container style="max-width: 1980px; width: 85%;margin-top: 3%;margin-bottom: 3%;">
+        <h1 class="title" style="margin-left:30%; margin-top: 2%;font-size: 36pt;font-family: Comfortaa;">My Favorite Recipes</h1>
+
     <b-row>    
       <!-- <b-col  class="col-md-4 mt-4" v-for="r in recipes" :key="r.id">
         <RecipePreview class="recipePreview" :recipe="r" />
@@ -69,6 +71,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import url('https://fonts.googleapis.com/css2?family=Amaranth&family=Comfortaa:wght@300&family=Lemonada:wght@400;500&family=Mali:wght@200&family=Shadows+Into+Light+Two&family=Syncopate&display=swap');
+
 .container {
   min-height: 400px;
 }

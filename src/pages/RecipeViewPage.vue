@@ -2,8 +2,8 @@
   <div class="container" style="max-width: 1980px; width: 100%">
   <link rel="stylesheet" href="http://static.sasongsmat.nu/fonts/vegetarian.css" />
     <div v-if="recipe">
-      <div class="recipe-header mt-3 " >
-        <h1 style="padding-top: 3%;font-size: 36pt;">{{ recipe.title }}</h1>
+      <div class="recipe-header mt-2 " >
+        <h1 style="padding-top: 2%;font-size: 32pt;">{{ recipe.title }}</h1>
         
         <img :src="recipe.image" class="center" />
         <div class="mb-3" id="fav"
@@ -12,7 +12,7 @@
                 v-on:click="MarkFavorite">
                <span id="textFavorite"> &#10084;</span>
             </div>
-        <div style="margin-top: 45%">
+        <div style="margin-top: 33%">
           <ul class="details" v-bind:style="countList"
 >
             <li>
@@ -83,7 +83,7 @@
           <div class="instruction" >
             <div v-if="recipe._instructions.length>0" class="title">Instructions</div>
            
-            <ol style="counter-reset: section; margin-top: 2%; list-style:none;  ">
+            <ol style="counter-reset: section;  list-style:none; padding: 1%;background-color: rgba(252, 252, 252, 0.795); margin-left: 5%;margin-right: 5%;  ">
               <li class="ins" v-for="s in recipe._instructions" :key="s.number">
                 {{ s.step }}
               </li>
@@ -191,13 +191,13 @@ export default {
         this.size++;
       }
       if(this.recipe.vegan ){
-        this.countr-=5;
+        this.countr-=4;
       }
       if(this.recipe.vegetarian ){
-        this.countr-=5;
+        this.countr-=4;
       }
       if(!this.recipe.glutenFree ){
-        this.countr-=5;
+        this.countr-=4;
       }
 
       if (this.$root.store.username && this.$root.store.lastSearch) {
@@ -280,14 +280,12 @@ export default {
 .container{
   padding-bottom: 2%;
 }
-.instruction{
-    background-color: rgba(252, 252, 252, 0.795);
-
-}
 .wrapper {
   display: flex;
   font-size: 14pt;
   background-color: rgba(252, 252, 252, 0.795);
+    margin-left: 5%;
+  margin-right: 5%;
 }
 .wrapped {
   width: 50%;
@@ -298,13 +296,17 @@ export default {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 75%;
-  margin-top: 3%;
+  width: 800px;
+  height: 400px;
+  margin-top: 1.5%;
 }
 .recipe-header {
   font-family: Comfortaa;
   text-align: center;
   background-color: rgb(248, 186, 41);
+  margin-left: 10%;
+  margin-right: 10%;
+
 
  
 }
@@ -319,15 +321,15 @@ export default {
 
 li{
   padding: 1%;
-  font-size: 14pt;
+  font-size: 12pt;
 }
 
 #fav{
-  font-size: 56pt;
+  font-size: 40pt;
   /* background-color:rgba(255, 255, 255, 0.263); */
  -webkit-text-stroke: 2px white;
   margin-right: 67%;
-    margin-top: -50%;
+    margin-top: -40%;
     cursor: pointer;
 
 }
@@ -348,8 +350,10 @@ li{
   border-radius: 100%;
   text-align: center;
    position: absolute;
-   left: -3.5%;
-   padding-top: 0.2%;
+   left: -4%;
+   padding-top: 0.5%;
+   margin-top: -0.8%;
+
 }
 .ins{
   position: relative;

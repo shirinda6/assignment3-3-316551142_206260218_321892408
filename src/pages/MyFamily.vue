@@ -1,8 +1,10 @@
 <template>
   <b-container style="max-width: 1980px; width: 85%;margin-top: 3%;margin-bottom: 3%;">
+      <h1 class="title" style="margin-left:30%; margin-top: 2%;font-size: 36pt;font-family: Comfortaa;">My Family Recipes</h1>
+
   <b-row>
     <b-card-group
-              class="col-md-3 mt-4"
+              class="col-md-4 mt-4"
               v-for="r in recipes"
               :key="r.id"
             >
