@@ -150,10 +150,9 @@ export default {
 
 <style lang="scss">
 @import "@/scss/form-style.scss";
-@import url('https://fonts.googleapis.com/css2?family=Amaranth&family=Lemonada:wght@400;500&family=Mali:wght@200&family=Shadows+Into+Light+Two&family=Syncopate&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap');
 #app {
-  font-family: 'Brush Script MT', cursive;
+  font-family: Comfortaa;
   font-size: 12pt;
   background-image: url('b12.jpeg') ;
   background-size: cover;
