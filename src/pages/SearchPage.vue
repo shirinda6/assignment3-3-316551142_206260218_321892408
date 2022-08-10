@@ -54,7 +54,7 @@
         <b-container>
           <b-row>
             <b-card-group
-              class="col-md-3 mt-4"
+              class="col-xl mt-4"
               v-for="r in recipes"
               :key="r.id"
             >

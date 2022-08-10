@@ -26,13 +26,13 @@
             <b-nav-item style="margin-left:4%;display: inline-block; white-space: nowrap;"   @click="showModal">Create Recipe</b-nav-item>          
             </span>
             
-            <span  v-if="$root.store.username" style="margin-left:70%;">
-                <button variant="outline-info" style="background-color:	#D3D3D3;border:4px solid #83ff6b;box-shadow: 0px -5px 10px 0px rgba(0, 0, 0, 0.5); border-radius: 25px; width: 170%;height: 95%;" class="mb-2" @click="Logout">
+          </b-navbar-nav>
+        </b-collapse>
+            <span  v-if="$root.store.username" >
+                <button variant="outline-info" style="background-color:	#D3D3D3;border:4px solid #83ff6b;box-shadow: 0px -5px 10px 0px rgba(0, 0, 0, 0.5); border-radius: 25px; width: 100%;height: 95%;" class="mb-2" @click="Logout">
                   <b-icon icon="power" aria-hidden="true">
                 </b-icon> {{ $root.store.username }}</button>
             </span>
-          </b-navbar-nav>
-        </b-collapse>
       </b-navbar>
     </div>      
     <b-modal size="lg" class="modal" id="modal-1" ref="my-modal1" title="Create Recipe" @ok="create">
@@ -201,6 +201,7 @@ export default {
 .modal-body{
     height: 68vh;
     overflow-y: auto;
+    max-height: 560px;
 }
 
 </style>
