@@ -3,9 +3,9 @@
   <link rel="stylesheet" href="http://static.sasongsmat.nu/fonts/vegetarian.css" />
     <div v-if="recipe">
       <div class="recipe-header  " >
-        <h1 style="padding-top: 2%;font-size: 27pt;padding-bottom:2%">{{ recipe.title }}</h1>
-        <div style="display: flex;margin-top:2%;padding-bottom:5%">   
-          <div style="margin-top: -2%;text-align:center;padding:2%;background-color:#95b3a9bf; width: 80%;float: right;margin-left:10%;margin-right:-85%">
+        <h1 style="padding-top: 1%;font-size: 20pt;padding-bottom:1%;">{{ recipe.title }}</h1>
+        <div style="display: flex;margin-top:2%;padding-bottom:2%">   
+          <div style="margin-top: -2%;text-align:center;padding-top:1.5%;padding-bottom:1.5%;background-color:#95b3a9bf; width: 80%;float: right;margin-left:10%;margin-right:-85%">
           <img :src="recipe.image" class="center"/>
             <!-- <ul class="details" v-bind:style="countList"
   >
@@ -98,7 +98,7 @@
        
    
       </div>
-      <div class="recipe-body" style="margin-top:2%">  
+      <div class="recipe-body" >  
         <!-- <div class="wrapper"> -->
           <div class="title">Ingredients</div>
           <div class="wrapper">
@@ -350,8 +350,9 @@ export default {
   font-family: Comfortaa;
   text-align: center;
   /* background-color: rgb(248, 186, 41); */
-  margin-left: 8%;
-  margin-right: 8%;
+  /* margin-left: 8%;
+  margin-right: 8%; */
+  /* background-color: rgba(149, 179, 169, 0.75); */
   /* margin-top: 2% ; */
 
 
@@ -406,5 +407,5 @@ li{
   position: relative;
   margin-left: 3%;
 } 
-.title{font-size: 20pt; background-color: lightgray; text-align: center;}
+.title{font-size: 20pt; background-color: #95b3a9bf;color:white; text-align: center;}
 </style>

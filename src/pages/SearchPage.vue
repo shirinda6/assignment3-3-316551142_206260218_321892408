@@ -156,7 +156,7 @@ export default {
   /* margin-top: 1%;
   margin-bottom: 1%; */
   position: relative;
-  background-color: rgba(248, 186, 41, 0.868) ;
+  background-color:rgba(149, 179, 169, 0.75) ;
   /* background-color:rgb(76, 158, 252); */
 }
 
@@ -164,7 +164,7 @@ export default {
   width: 85.5%;
   border-color:#25383C;
   border-width: 2px;
-  background-color: rgba(248, 186, 41, 0.868) ;
+  background-color:rgba(149, 179, 169, 0.75);
 }
 .subjectBy:focus{
   outline-style: none !important;

@@ -29,7 +29,7 @@
           </b-navbar-nav>
         </b-collapse>
             <span  v-if="$root.store.username" >
-                <button variant="outline-info" style="background-color:	#D3D3D3;border:4px solid #83ff6b;box-shadow: 0px -5px 10px 0px rgba(0, 0, 0, 0.5); border-radius: 25px; width: 100%;height: 95%;" class="mb-2" @click="Logout">
+                <button variant="outline-info" style="background-color:	#D3D3D3;border:4px solid  rgb(218 155 224);box-shadow: 0px -5px 10px 0px rgba(0, 0, 0, 0.5); border-radius: 25px; width: 100%;height: 95%;" class="mb-2" @click="Logout">
                   <b-icon icon="power" aria-hidden="true">
                 </b-icon> {{ $root.store.username }}</button>
             </span>
