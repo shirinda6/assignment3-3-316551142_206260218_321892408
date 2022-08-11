@@ -202,5 +202,8 @@ export default {
     overflow-y: auto;
     max-height: 560px;
 }
+.modal-header{
+    font-family: Comfortaa;
+}
 
 </style>

@@ -98,7 +98,7 @@
           <div style="margin-top: 5.5%;">
             <b-form-checkbox style=" " value="c2" >Vegetarian</b-form-checkbox>
             <b-form-checkbox value="c3">Vegan</b-form-checkbox>
-            <b-form-checkbox value="c4">Gluten</b-form-checkbox>
+            <b-form-checkbox value="c4">FreeGluten</b-form-checkbox>
           </div>
         </b-form-checkbox-group>
       </b-form-group>
@@ -252,7 +252,7 @@
       </div>
 
 <!-- checkbox for family-recipe -->
-      <div style="background-color:lightgrey;">
+      <div style="background-color:rgba(177, 188, 184, 0.75);">
         <b-form-checkbox
           id="family"
           @input="flag = !flag"
@@ -423,13 +423,13 @@ export default {
 
 
 #b1,#b2,#b3,#b4{
-  color:white; background-color: #8FBC8F
+  color:white; background-color: rgba(149, 179, 169, 0.75);
  }
 #b1:hover,
 #b2:hover,
 #b3:hover,
 #b4:hover {
-  color:white; background-color: #a8c2a8
+  color:white; background-color:rgba(177, 188, 184, 0.75);
 }
 
 .checks {

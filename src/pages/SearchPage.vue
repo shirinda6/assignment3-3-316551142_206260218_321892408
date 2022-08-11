@@ -149,10 +149,10 @@ export default {
   border:2px solid ;
   border-color: #25383C;
   border-radius: 10%;
-  padding-bottom: 7px;
+  padding-bottom: 8px;
   padding-right: 4px;
   padding-left: 4px;
-  padding-top: 2.5px;
+  padding-top: 8px;
   /* margin-top: 1%;
   margin-bottom: 1%; */
   position: relative;
@@ -166,6 +166,10 @@ export default {
   border-width: 2px;
   background-color:rgba(149, 179, 169, 0.75);
 }
+.subjectBy:hover,.order:hover {
+  color:white; background-color:rgba(177, 188, 184, 0.75);
+}
+
 .subjectBy:focus{
   outline-style: none !important;
   box-shadow: none;

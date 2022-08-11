@@ -218,5 +218,6 @@ export default {
 <style>
 .bt:hover{
  color: #25383C;;
+ background-color:rgba(177, 188, 184, 0.75)
 }
 </style>
