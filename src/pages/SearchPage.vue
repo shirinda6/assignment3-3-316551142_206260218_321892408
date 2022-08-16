@@ -96,7 +96,6 @@ export default {
     };
   },
   mounted() {
-    console.log("mounted");
     if (this.$root.store.username && this.$root.store.lastSearch) {
       this.flag = true;
       this.recipes = this.$root.store.lastSearch.resuilts;
@@ -106,12 +105,12 @@ export default {
       this.filtercuisines = params.cuisine.split(",");
       this.filterdiets = params.diet.split(",");
       this.filterintolerances = params.intolerance.split(",");
-      console.log("recipe", this.recipes);
     }
   },
   methods: {
     showResult(data) {
-      this.recipes = data;
+      this.recipes = data.resuilts;
+      this.foodName=data.paramsQuery.RecipeName;
       if (this.recipes.length==0){
         alert("Sorry, we couldn't find any reasult.\n Try another search "+String.fromCodePoint(0x1F9D0));
       }

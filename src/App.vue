@@ -69,9 +69,7 @@ export default {
       },
       async create(event){
         event.preventDefault()
-        console.log(this.$refs.createRecipe.form,"form");
         if(!(this.$refs.createRecipe.form.recipeName && this.$refs.createRecipe.form.ingredients && this.$refs.createRecipe.form.image && this.$refs.createRecipe.form.preparationTime && this.$refs.createRecipe.form.preparationInstructions)){
-          console.log("am");
           return
         }
         // add ml grm to amount 
@@ -80,15 +78,11 @@ export default {
         let instructions="";
         for (const [key, value] of Object.entries(this.$refs.createRecipe.form.ingredients)) {
           if(value.ingredient=='')continue;
-          console.log("value",value)
           if(str!=="") {str+=",";}
           str+=`${value.ingredient}:${value.amount} ${value.type}`;
         }
-        console.log("str",str)
-        console.log("preparationInstructions",this.$refs.createRecipe.form.preparationInstructions);
         for (const [key, value] of Object.entries(this.$refs.createRecipe.form.preparationInstructions)) {
           if(value.instruction=='')continue;
-          console.log("value",value)
           if(instructions!=="") {instructions+=",";}
           instructions+=`${value.instruction}`;
         }
@@ -114,11 +108,8 @@ export default {
             customaryPrepare:this.$refs.createRecipe.form.customaryPrepare,
           },{withCredentials: true}
         );
-        console.log(response);
         ids= response.data.recipe_id.toString();
       } catch (err) {
-        console.log(err)
-        console.log(err.response);
         this.form.submitError = err.response.data.message;
       }
 
@@ -133,9 +124,7 @@ export default {
 
           {reciepeId: ids,},{withCredentials: true}
         );
-        // console.log(response);
       } catch (err) {
-        console.log(err.response1);
         this.form.submitError = err.response.data.message;
       }
            }

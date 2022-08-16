@@ -52,7 +52,6 @@ export default {
             recipe.userFavorite=favorites[recipe.id];
           });
         }
-        // console.log(this.recipes);
       } catch (error) {
         console.log(error);
       }

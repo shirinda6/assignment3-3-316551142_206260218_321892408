@@ -14,36 +14,43 @@
           <div class="col-md-4">
             <div class="about-col">
               <div class="img">
-                <img
+                <!-- <img
                   src="https://hauteliving.com/wp-content/uploads/2013/12/The-Gordon-Ramsay-Pub-Grill-Team-at-Caesars-Palace-toasts-to-a-successfull-first-year-2.jpg"
                   alt=""
                   class="img-fluid"
-                />
+                /> -->
                 <div class="icon"><i class="fas fa-users"></i></div>
               </div>
-              <h2 class="title"><a href="#">Our Team</a></h2>
+              <h2 class="title">Our Team</h2>
               <p>
-                Our development team : Liron Groer, Shir Indaporker , Anna
-                kolkovsky
+                Our development team: Liron Groer, Shir Indaporker, Anna
+                kolkovsky.
+
+              </p>
+              <p>
+                We are 3'rd year students in Information Systems and Software engineering at Ben-Gurion university.
               </p>
               <div class="d-flex justify-content-center"></div>
             </div>
+
           </div>
           <div class="col-md-4">
             <div class="about-col">
               <div class="img">
-                <img
-                  src="https://merriam-webster.com/assets/mw/images/article/art-wap-article-main/gourmet-vs-gourmand-usage-6072-842828b6056382ff680d9e3b6a345554@2x.jpg"
+                <!-- <img 
+                  src="https://www.linkpicture.com/q/sal.png"
                   alt=""
-                  class="img-fluid"
-                />
+                 width="100%"
+                 height="233px"
+                  
+                /> -->
                 <div class="icon"><i class="fas fa-project-diagram"></i></div>
               </div>
-              <h2 class="title"><a href="#">Our Project</a></h2>
+              <h2 class="title">Our Project</h2>
               <p>
-                In our site you can create , find , like and share with the
-                world your special recipes. For the more , you can see how many
-                people watched or liked your great recipe!
+                As part of a web development environment course we created this website which allows you to create, find, like and share your special recipes with
+                people around the world. In addition, you can see how many
+                people watched or liked your great recipes!
               </p>
               <div class="d-flex justify-content-center"></div>
             </div>
@@ -51,17 +58,22 @@
           <div class="col-md-4">
             <div class="about-col">
               <div class="img">
-                <img
+                <!-- <img
                   src="https://eatforum.org/content/uploads/2019/01/Food_market-e1564998641790.jpg"
                   alt=""
                   class="img-fluid"
-                />
+                /> -->
                 <div class="icon"><i class="fas fa-history"></i></div>
               </div>
-              <h2 class="title"><a href="#">Previous Work</a></h2>
+              <h2 class="title">Previous Work</h2>
               <p>
-                In our project we developed the site , the server and the
-                communication between them through an API that we also created.
+              As a preliminary work, we developed a full stack web application.
+              </p>
+              <p>     
+                we developed an API for the Client-Server communication using Yaml,
+              </p>
+              <p>
+                establish a server side using node.js and create database to receive and respond requests according to the API using mySQL.
               </p>
               <div class="d-flex justify-content-center"></div>
             </div>
@@ -116,14 +128,13 @@ a:hover {
   display: block;
   width: 40px;
   height: 3px;
-  background: #18d26e;
+  background: rgba(149, 179, 169, 1);
   bottom: 0;
   left: calc(50% - 20px);
 }
 
 .section-header p {
   text-align: center;
-  padding-bottom: 30px;
   color: #333;
 }
 
@@ -145,9 +156,13 @@ a:hover {
 
 #about .about-col {
   background: #fff;
-  border-radius: 0 0 4px 4px;
+  background-color: #95b3a966;
+  border-radius: 10%;
   box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.08);
   margin-bottom: 20px;
+  box-sizing: content-box;  
+  height: 280px;
+  border: #333;
 }
 
 #about .about-col .img {
@@ -164,7 +179,7 @@ a:hover {
   padding-top: 12px;
   text-align: center;
   position: absolute;
-  background-color: #18d26e;
+  background-color: rgba(149, 179, 169, 1);;
   border-radius: 50%;
   text-align: center;
   border: 4px solid #fff;
@@ -180,13 +195,13 @@ a:hover {
   transition: 0.3s;
 }
 
-#about .about-col:hover .icon {
+/* #about .about-col:hover .icon {
   background-color: #fff;
-}
+} */
 
-#about .about-col:hover i {
-  color: #18d26e;
-}
+/* #about .about-col:hover i {
+  color: rgba(149, 179, 169, 0.75);
+} */
 
 #about .about-col h2 {
   color: #000;
@@ -195,22 +210,25 @@ a:hover {
   font-size: 20px;
   padding: 0;
   margin: 40px 0 12px 0;
+  cursor: default;
+  padding-top: 40px;
+
 }
 
 #about .about-col h2 a {
   color: #000;
 }
 
-#about .about-col h2 a:hover {
-  color: #18d26e;
-}
+/* #about .about-col h2 a:hover {
+  color:rgba(149, 179, 169, 0.75);
+} */
 
 #about .about-col p {
   font-size: 14px;
   line-height: 24px;
   color: #333;
   margin-bottom: 0;
-  padding: 0 20px 20px 20px;
+  padding: 0 20px 2px 20px;
 }
 .btn-sm-default-web {
   background: #0c2b4b;
@@ -220,4 +238,5 @@ a:hover {
   color: #ffffff;
   letter-spacing: 1px;
 }
+
 </style>

@@ -27,7 +27,7 @@
           id="input-group-image"
           label-cols-sm="3"
           class="title"
-          label="Image:"
+          label="Image: (url)"
           label-for="image"
         >
           <b-form-input
@@ -70,6 +70,7 @@
             label-cols-sm="6"
             label="number Of Dishes:"
             label-for="numberOfDishes"
+
           
           >
             <b-form-input
@@ -77,7 +78,7 @@
               v-model="$v.form.numberOfDishes.$model"
               type="number"
               min="1"
-              style="width: 94%;"
+              style="width:167.84px;margin-left:15px"
               :state="validateState('numberOfDishes')"
             ></b-form-input>
             <b-form-invalid-feedback>
@@ -93,7 +94,6 @@
           v-model="form.checked"
           id="checkboxes-4"
           :aria-describedby="ariaDescribedby"
-          style="margin-left: -10%;"
           ><label class="title" >Select diets:</label>
           <div style="margin-top: 5.5%;">
             <b-form-checkbox style=" " value="c2" >Vegetarian</b-form-checkbox>
@@ -106,9 +106,9 @@
 <!-- Add Ingredients -->
       <div style="margin-top: 10%;"> 
         <label class="title" >Add ingredients : </label>
-        <label style="margin-left: 7%;">Ingredient </label>
-        <label style="margin-left: 19%;">Amount </label>
-        <label style="margin-left: 19%;">Type </label>
+        <label style="margin-left: 8%;">Ingredient </label>
+        <label style="margin-left: 21%;">Amount </label>
+        <label style="margin-left: 15%;">Type </label>
 
        <div class="btn-group bt"  role="group" style="height: 50%;margin-left: 2%;" aria-label="Basic example">
           <button
@@ -133,10 +133,10 @@
             :key="index"
           >
             <b-form-group
-              style="margin-left: 27%;"
+              style="margin-left: 27%; width:30%"
               class="ingredient"
               id="input-group-ingredient"
-              label-for="ingredient"
+              label-for="ingredient" 
             >
               <b-form-input
                 id="ingredient"
@@ -155,7 +155,7 @@
             <b-form-group
               id="input-group-amount"
               class="ingredient"
-              label-for="amount"
+              label-for="amount" style="width: 20%;"
             >
               <b-form-input
                 id="amount"
@@ -328,7 +328,6 @@ export default {
             instruction: "",
           },
         ],
-        // preparationInstructions: "",
         ingredients: [
           {
             ingredient: "",
@@ -381,9 +380,7 @@ export default {
     },
   },
 
-  mounted() {
-    console.log("enter");
-  },
+ 
 
   methods: {
     addIngredient() {
@@ -402,7 +399,6 @@ export default {
       this.form.preparationInstructions.push({
         instruction: "",
       });
-      console.log(this.form.preparationInstructions);
     },
     removeInstruction() {
       if(this.form.preparationInstructions.length>1)

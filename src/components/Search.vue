@@ -112,16 +112,12 @@ import intolerances from "../assets/intolerances";
 export default {
   data() {
     return {
-      // foodName:"",
+      food:"",
       cuisines: [],
       diets: [],
       intolerances: [],
       recipes: [],
       showSidebar:false,
-      // filtercuisines:[],
-      // filterdiets:[],
-      // filterintolerances:[],
-      // selected: 5,
     };
   },
   props: {
@@ -157,7 +153,8 @@ export default {
         let index = this.filtercuisines.indexOf(item);
         this.filtercuisines.splice(index, 1);
       } else this.filtercuisines.push(item);
-      console.log(this.filtercuisines);
+      this.food=this.foodName;
+
     },
     insertDiets(item) {
       if (this.filterdiets.includes(item)) {
@@ -175,7 +172,7 @@ export default {
       try {
         let params = {
           numberOfRecipe: this.selected,
-          RecipeName: this.foodName,
+          RecipeName: this.food,
           cuisine: this.filtercuisines.join(","),
           diet: this.filterdiets.join(","),
           intolerance: this.filterintolerances.join(","),
@@ -187,9 +184,8 @@ export default {
           { withCredentials: true }
         );
 
-        console.log(response);
         this.recipes = response.data.search;
-
+        let last={}
         if (this.$root.store.username) {
           const views = response.data.view;
           const favorites = response.data.favorite;
@@ -198,7 +194,7 @@ export default {
             recipe.userView = views[recipe.id];
             recipe.userFavorite = favorites[recipe.id];
           });
-          let last = {
+          last = {
             paramsQuery: params,
             resuilts: this.recipes,
           };
@@ -206,7 +202,8 @@ export default {
           this.$root.store.Search(last);
         }
         this.showSidebar=false;
-        this.$emit("res", this.recipes);
+        this.$emit("res", last);
+        this.foodName=params.RecipeName;
       } catch (error) {
         console.log(error);
       }

@@ -49,10 +49,7 @@ export default {
         console.log(response);
         const recipes = response.data;
         this.recipes = [];
-        // this.recipes.push(...recipes);
-        console.log(recipes);
         recipes.forEach(element => {
-            console.log(element);
             this.recipes.push(element)
         });
         console.log(this.recipes);

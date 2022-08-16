@@ -167,7 +167,6 @@ export default {
   },
   computed:{
     countList(){
-      console.log(this.countr);
       return{
         'margin-left':this.countr+'%'
       }
@@ -176,12 +175,10 @@ export default {
   async created() {
     this.recipe=this.$route.params.recipe;
     let temp=[]
-    console.log(this.recipe.ingredients)
     if (this.recipe.ingredients.includes(","))
         temp= this.recipe.ingredients.split(",");
     else  temp.push(this.recipe.ingredients);
 
-  console.log("temp",temp)
     for (let ingredient of temp){
       let arr=ingredient.split(":");
       this.ingredients.push(`${arr[1]} ${arr[0]}`);

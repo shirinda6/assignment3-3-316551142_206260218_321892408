@@ -41,7 +41,6 @@ export default {
           // "https://test-for-3-2.herokuapp.com/recipes/random"
         );
 
-        console.log(response);
         const recipes = response.data.random;
         this.recipes = [];
         this.recipes.push(...recipes);
@@ -53,7 +52,6 @@ export default {
             recipe.userFavorite=favorites[recipe.id];
           });
         }
-        // console.log(this.recipes);
       } catch (error) {
         console.log(error);
       }
