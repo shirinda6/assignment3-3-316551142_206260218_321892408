@@ -5,6 +5,7 @@
       <div style=" margin-top: 2%; margin-left: 27%;">
         <Search1
           @res="showResult"
+          @inputName="setName"
           :selected="selected"
           :foodName="foodName"
           :filtercuisines="filtercuisines"
@@ -108,9 +109,12 @@ export default {
     }
   },
   methods: {
+    setName(name){
+      this.foodName=name;
+    },
     showResult(data) {
       this.recipes = data.resuilts;
-      this.foodName=data.paramsQuery.RecipeName;
+      // this.foodName=data.paramsQuery.RecipeName;
       if (this.recipes.length==0){
         alert("Sorry, we couldn't find any reasult.\n Try another search "+String.fromCodePoint(0x1F9D0));
       }

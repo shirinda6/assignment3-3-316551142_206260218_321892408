@@ -6,7 +6,7 @@
           <b-form-input style="width: 90%"
     id="foodName"
     placeholder="Enter food name"
-    v-model="foodName"></b-form-input>
+    v-model="model"></b-form-input>
         </div>
       </div>
       <div>
@@ -147,14 +147,23 @@ export default {
     this.diets.push(...diets);
     this.intolerances.push(...intolerances);
   },
+  computed: {
+    model: {
+      get() {
+        return this.foodName;
+      },
+      set(value) {
+        this.$emit('inputName', this.foodName);
+        this.food=value;
+      },
+    },
+  },
   methods: {
     insertCuisines(item) {
       if (this.filtercuisines.includes(item)) {
         let index = this.filtercuisines.indexOf(item);
         this.filtercuisines.splice(index, 1);
       } else this.filtercuisines.push(item);
-      this.food=this.foodName;
-
     },
     insertDiets(item) {
       if (this.filterdiets.includes(item)) {
@@ -183,9 +192,13 @@ export default {
           { params },
           { withCredentials: true }
         );
-
+        console.log(response);
+        this.showSidebar=false;
         this.recipes = response.data.search;
-        let last={}
+        let last = {
+            paramsQuery: params,
+            resuilts: this.recipes,
+          };
         if (this.$root.store.username) {
           const views = response.data.view;
           const favorites = response.data.favorite;
@@ -201,9 +214,8 @@ export default {
 
           this.$root.store.Search(last);
         }
-        this.showSidebar=false;
+        console.log("end",this.food);
         this.$emit("res", last);
-        this.foodName=params.RecipeName;
       } catch (error) {
         console.log(error);
       }
