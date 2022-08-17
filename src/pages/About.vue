@@ -6,8 +6,10 @@
           <h3>About Us</h3>
           <p>
             Welcome to our recipes site ! <br />
-            We hope you are enjoying our product and we want you to know how it
-            all heppend
+            you can create, find, like and share your special recipes with
+            people around the world.
+            <br>
+             In addition, you can see how many people watched or liked your great recipes!
           </p>
         </header>
         <div class="row about-cols">
@@ -23,9 +25,7 @@
               </div>
               <h2 class="title">Our Team</h2>
               <p>
-                Our development team: Liron Groer, Shir Indaporker, Anna
-                kolkovsky.
-
+               Liron Groer, Shir Indaporker, Anna kolkovsky.
               </p>
               <p>
                 We are 3'rd year students in Information Systems and Software engineering at Ben-Gurion university.
@@ -37,20 +37,12 @@
           <div class="col-md-4">
             <div class="about-col">
               <div class="img">
-                <!-- <img 
-                  src="https://www.linkpicture.com/q/sal.png"
-                  alt=""
-                 width="100%"
-                 height="233px"
-                  
-                /> -->
                 <div class="icon"><i class="fas fa-project-diagram"></i></div>
               </div>
               <h2 class="title">Our Project</h2>
               <p>
-                As part of a web development environment course we created this website which allows you to create, find, like and share your special recipes with
-                people around the world. In addition, you can see how many
-                people watched or liked your great recipes!
+                As part of a web development environment course we developed a full stack web application.
+                This project includes an API for the Client-Server communication using Yaml,a server side using node.js and database using mySQL, for receive and respond requests according to the API. 
               </p>
               <div class="d-flex justify-content-center"></div>
             </div>
@@ -58,23 +50,22 @@
           <div class="col-md-4">
             <div class="about-col">
               <div class="img">
-                <!-- <img
-                  src="https://eatforum.org/content/uploads/2019/01/Food_market-e1564998641790.jpg"
-                  alt=""
-                  class="img-fluid"
-                /> -->
                 <div class="icon"><i class="fas fa-history"></i></div>
               </div>
-              <h2 class="title">Previous Work</h2>
-              <p>
-              As a preliminary work, we developed a full stack web application.
-              </p>
-              <p>     
-                we developed an API for the Client-Server communication using Yaml,
-              </p>
-              <p>
-                establish a server side using node.js and create database to receive and respond requests according to the API using mySQL.
-              </p>
+              <h2 class="title">Previous Work</h2>  
+              <div class="pre" >                                       
+                <div class="pre-links">           
+                  <a class="links" href="https://web-development-environments-2022.github.io/316551142/">Yona's Personal Wesite</a>
+                  <br>
+                  <a class="links" href="https://web-development-environments-2022.github.io/206260218/2/">Sarah's Personal Website</a>
+                  <br>
+                  <a class="links" href="https://web-development-environments-2022.github.io/321892408//">Arnold's Personal Wesite</a>
+                  <br>
+                </div>            
+                <div style=" margin-left:7%;">
+                  <a class="links" href=" https://web-development-environments-2022.github.io/assignment2-316551142_206260218_321892408/">Pacman Game </a>
+                </div>
+              </div>
               <div class="d-flex justify-content-center"></div>
             </div>
           </div>
@@ -207,7 +198,7 @@ a:hover {
   color: #000;
   text-align: center;
   font-weight: 700;
-  font-size: 20px;
+  font-size: 28px;
   padding: 0;
   margin: 40px 0 12px 0;
   cursor: default;
@@ -224,11 +215,11 @@ a:hover {
 } */
 
 #about .about-col p {
-  font-size: 14px;
+  font-size: 13px;
   line-height: 24px;
   color: #333;
   margin-bottom: 0;
-  padding: 0 20px 2px 20px;
+  padding: 0 20px 15px 20px;
 }
 .btn-sm-default-web {
   background: #0c2b4b;
@@ -238,5 +229,24 @@ a:hover {
   color: #ffffff;
   letter-spacing: 1px;
 }
+.pre{
+  padding-left:18%;
+  padding-top: 0.5%;
+}
+.pre-title{
+    font-size:16px;
+    margin-top: 6%;
+    margin-bottom: 6%;
+    text-align: center;
+    font-weight: bold;
+    text-decoration: underline;
+}
+.pre-links{
+   margin-left:7%;
+   margin-top: 5%;
 
+}
+.links{
+font-size:16px;
+}
 </style>
